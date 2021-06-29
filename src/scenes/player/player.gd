@@ -1,17 +1,34 @@
-extends Area2D
+extends KinematicBody2D
 
-export var rot_speed = 2.6
-export var thrust = 500
-export var max_vel = 400
-export var friction = 0.65
+# Movement speed in pixels per second.
+var speed := 300
+# Bullets per second
+var fireRate = 0.5
+# Internal time to control fire rate.
+# Starting off from fireRate to allow shooting on first key press.
+var fireTimer = fireRate
 
-var screen_size = Vector2()
-var rot = 0
-var pos = Vector2()
-var vel = Vector2()
-var acc = Vector2()
 
-func _ready():
-  screen_size = get_viewport_rect().size
-  pos = screen_size / 2
-  self.position = pos
+func _physics_process(_delta: float) -> void:
+	if global_position.y < 0:
+		queue_free()
+
+	# Once again, we call `Input.get_action_strength()` to support analog movement.
+	var direction := Vector2(
+		Input.get_action_strength("right") - Input.get_action_strength("left"),
+		Input.get_action_strength("down") - Input.get_action_strength("up")
+	)
+	# When aiming the joystick diagonally, the direction vector can have a length
+	# greater than 1.0, making the character move faster than our maximum expected
+	# speed. When that happens, we limit the vector's length to ensure the player
+	# can't go beyond the maximum speed.
+	if direction.length() > 1.0:
+		direction = direction.normalized()
+
+	move_and_slide(speed * direction)
+
+	if Input.is_action_pressed("fire"):
+		fireTimer += _delta
+		if fireTimer > fireRate:
+			fireTimer = 0
+			$bulletSpawner.spawn()
