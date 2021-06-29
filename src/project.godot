@@ -10,18 +10,13 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
 config/name="Zorblade"
-run/main_scene="res://scenes/player.tscn"
+run/main_scene="res://scenes/root.tscn"
 config/icon="res://icon.png"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "atlas_importer3" )
 
 [rendering]
 
