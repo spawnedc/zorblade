@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 # Movement speed in pixels per second.
 var speed := 300
-# Bullets per second
-var fireRate = 0.5
-# Internal time to control fire rate.
-# Starting off from fireRate to allow shooting on first key press.
-var fireTimer = fireRate
+export var current_weapon: String = 'Quad Shot'
+
+
+func _ready():
+	$weapon.set_weapon(current_weapon)
 
 
 func _physics_process(_delta: float) -> void:
@@ -28,7 +28,4 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide(speed * direction)
 
 	if Input.is_action_pressed("fire"):
-		fireTimer += _delta
-		if fireTimer > fireRate:
-			fireTimer = 0
-			$bulletSpawner.spawn()
+		$weapon.fire()

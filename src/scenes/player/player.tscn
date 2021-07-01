@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/spaceshooter/playerShip1_blue.png" type="Texture" id=2]
-[ext_resource path="res://scenes/spawner/spawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/bullets/singleShot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/weapons/SingleShot.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.6329
@@ -16,8 +15,8 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 5.66968 )
 shape = SubResource( 1 )
 
-[node name="bulletSpawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -61.9929 )
-spawn_scene = ExtResource( 4 )
+[node name="weapon" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -60 )
