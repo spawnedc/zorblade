@@ -29,6 +29,8 @@ func _get_weapon_instance(scene_name: String) -> Resource:
 func fire():
 	if can_fire:
 		current_weapon.fire()
+		can_fire = false
+		fire_timer = 0
 
 
 func _physics_process(_delta):
@@ -36,8 +38,6 @@ func _physics_process(_delta):
 	if fire_timer > fire_rate:
 		fire_timer = 0
 		can_fire = true
-	else:
-		can_fire = false
 
 
 func _on_weapon_change(weapon_data):

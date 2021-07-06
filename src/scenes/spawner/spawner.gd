@@ -3,7 +3,7 @@ extends Position2D
 export var spawn_scene: PackedScene
 
 
-func spawn(_spawn_scene := spawn_scene) -> void:
+func spawn(_spawn_scene := spawn_scene) -> Node2D:
 	# Creates a new instance of the _spawn_scene
 	var spawn := _spawn_scene.instance() as Node2D
 
@@ -14,3 +14,5 @@ func spawn(_spawn_scene := spawn_scene) -> void:
 
 	# Move the new instance to the Spawner2D position
 	spawn.global_position = global_position
+
+	return spawn

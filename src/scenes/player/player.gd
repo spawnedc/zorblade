@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # Movement speed in pixels per second.
 var speed := 300
-export var current_weapon: String = 'Double Shot'
+export var current_weapon: String = 'Single Shot'
 
 
 func _ready():
