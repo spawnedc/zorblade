@@ -4,10 +4,18 @@
 [ext_resource path="res://scenes/weapons/weapon.gd" type="Script" id=2]
 [ext_resource path="res://scenes/bullets/BlueLaser.tscn" type="PackedScene" id=3]
 
-[node name="SingleShot" type="Node2D"]
+[node name="TripleShot" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="bulletSpawners" type="Node2D" parent="."]
 
 [node name="bulletSpawner" parent="bulletSpawners" instance=ExtResource( 1 )]
+position = Vector2( 20, 0 )
+spawn_scene = ExtResource( 3 )
+
+[node name="bulletSpawner2" parent="bulletSpawners" instance=ExtResource( 1 )]
+position = Vector2( -20, 0 )
+spawn_scene = ExtResource( 3 )
+
+[node name="bulletSpawner3" parent="bulletSpawners" instance=ExtResource( 1 )]
 spawn_scene = ExtResource( 3 )
