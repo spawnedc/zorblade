@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactMetal_004.ogg-9b2d6a5985746d2210f8e6fd4ddcfffd.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/impactMetal_004.ogg"
+dest_files=[ "res://.import/impactMetal_004.ogg-9b2d6a5985746d2210f8e6fd4ddcfffd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/thrusterFire_004.ogg-fa79df277ecda769cf672f63ae98f5ae.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/thrusterFire_004.ogg"
+dest_files=[ "res://.import/thrusterFire_004.ogg-fa79df277ecda769cf672f63ae98f5ae.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

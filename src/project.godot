@@ -27,6 +27,13 @@ window/size/height=800
 window/size/test_width=900
 window/size/test_height=1200
 
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
+
 [input]
 
 ui_left={
