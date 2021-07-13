@@ -1,8 +1,14 @@
 extends KinematicBody2D
 
+const ACCELERATION = 2500
+const MAX_SPEED = 400
+const FRICTION = 2500
+
+var velocity = Vector2.ZERO
+
 # Movement speed in pixels per second.
 var speed := 300
-export var current_weapon: String = 'Single Shot'
+var current_weapon: String = 'Single Shot'
 
 
 func _ready():
@@ -28,23 +34,18 @@ func _handle_weapon_keys() -> void:
 		WeaponManager.set_weapon(new_weapon)
 
 
-func _physics_process(_delta: float) -> void:
-	if global_position.y < 0:
-		queue_free()
+func _physics_process(delta: float) -> void:
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	input_vector = input_vector.normalized()
 
-	# Once again, we call `Input.get_action_strength()` to support analog movement.
-	var direction := Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	)
-	# When aiming the joystick diagonally, the direction vector can have a length
-	# greater than 1.0, making the character move faster than our maximum expected
-	# speed. When that happens, we limit the vector's length to ensure the player
-	# can't go beyond the maximum speed.
-	if direction.length() > 1.0:
-		direction = direction.normalized()
+	if input_vector != Vector2.ZERO:
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
-	move_and_slide(speed * direction)
+	velocity = move_and_slide(velocity)
 
 	_handle_weapon_keys()
 

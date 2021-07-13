@@ -8,11 +8,6 @@ func _ready():
 
 func _on_timer_timeout() -> void:
 	var enemy = $spawner.spawn()
-	enemy.connect('collided', self, '_on_enemy_collision')
+	enemy.add_to_group(Globals.GROUP_ENEMY)
 
 	$spawnTimer.wait_time = randi() % 5 + 1
-
-
-func _on_enemy_collision(entity, collision_info: KinematicCollision2D) -> void:
-	collision_info.collider.queue_free()
-	print(entity)
