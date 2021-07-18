@@ -9,5 +9,6 @@ func _ready():
 func _on_timer_timeout() -> void:
 	var enemy = $spawner.spawn()
 	enemy.add_to_group(Globals.GROUP_ENEMY)
+	enemy.position.x = randi() % 500 + 50
 
-	$spawnTimer.wait_time = randi() % 5 + 1
+	$spawnTimer.wait_time = randi() % 2 + 1
