@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal auto_fire_state_change(state)
+
 const ACCELERATION = 2500
 const MAX_SPEED = 400
 const FRICTION = 2500
@@ -9,6 +11,7 @@ var velocity = Vector2.ZERO
 # Movement speed in pixels per second.
 var speed := 300
 var current_weapon: String = 'Single Shot'
+var has_autofire: bool = false
 
 
 func _ready():
@@ -34,6 +37,12 @@ func _handle_weapon_keys() -> void:
 		WeaponManager.set_weapon(new_weapon)
 
 
+func _handle_autofire() -> void:
+	if Input.is_action_just_pressed("toggle_autofire"):
+		has_autofire = ! has_autofire
+		emit_signal("auto_fire_state_change", has_autofire)
+
+
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -48,6 +57,11 @@ func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 
 	_handle_weapon_keys()
+	_handle_autofire()
 
-	if Input.is_action_pressed("fire"):
-		$weapon.fire()
+	if has_autofire:
+		if Input.is_action_pressed("fire"):
+			$weapon.fire()
+	else:
+		if Input.is_action_just_pressed("fire"):
+			$weapon.fire()
