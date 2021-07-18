@@ -21,6 +21,7 @@ GameManager="*res://scripts/GameManager.gd"
 WeaponsData="*res://data/weapons_data.gd"
 WeaponManager="*res://scripts/WeaponManager.gd"
 CollisionManager="*res://scripts/CollisionManager.gd"
+SceneManager="*res://scripts/SceneManager.gd"
 
 [display]
 
@@ -30,6 +31,10 @@ window/size/test_width=900
 window/size/test_height=1200
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[gui]
+
+theme/custom_font="res://fonts/text_me_one_16.tres"
 
 [importer_defaults]
 
@@ -106,6 +111,11 @@ toggle_autofire={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
  ]
 }
+start_game={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -116,4 +126,5 @@ toggle_autofire={
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
