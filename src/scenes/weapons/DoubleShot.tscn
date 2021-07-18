@@ -11,11 +11,15 @@ script = ExtResource( 2 )
 [node name="bulletSpawners" type="Node2D" parent="."]
 
 [node name="bulletSpawner" parent="bulletSpawners" instance=ExtResource( 1 )]
-position = Vector2( 10, 0 )
+position = Vector2( 5, 0 )
 spawn_scene = ExtResource( 3 )
 
 [node name="bulletSpawner2" parent="bulletSpawners" instance=ExtResource( 1 )]
-position = Vector2( -10, 0 )
+position = Vector2( -5, 0 )
+spawn_scene = ExtResource( 3 )
+
+[node name="bulletSpawner3" parent="bulletSpawners" instance=ExtResource( 1 )]
+position = Vector2( -5, 0 )
 spawn_scene = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

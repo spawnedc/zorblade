@@ -6,11 +6,9 @@ onready var background = $ParallaxBackground/ParallaxLayer/Sprite
 
 
 func _ready():
-	var sprite_size = background.get_rect().size
 	var viewport_size = Globals.VIEWPORT_SIZE
 
 	parallax_layer.set_mirroring(viewport_size)
-	background.apply_scale(viewport_size / sprite_size)
 
 
 func _process(delta):
