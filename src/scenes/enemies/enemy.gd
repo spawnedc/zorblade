@@ -1,7 +1,11 @@
 extends KinematicBody2D
 
+const FRICTION = 20
 var speed := 200
 var direction = Vector2(0, 1)
+var final_position: Vector2
+var velocity: Vector2 = Vector2.ZERO
+var can_move_to_final_position: bool = false
 
 
 func _ready():
@@ -11,14 +15,33 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	var collision_info = move_and_collide(speed * direction * delta)
+	if can_move_to_final_position:
+		var current_pos = global_position
+		var vector = final_position - current_pos
+		var length = vector.length()
 
-	if collision_info:
-		CollisionManager.handle_collision(self, collision_info.collider)
+		if length <= 0:
+			velocity = Vector2(0, 0)
+		else:
+			velocity = vector * speed * delta
+
+		move_and_slide(velocity)
+	# var collision_info = move_and_collide(speed * direction * delta)
+
+	# if collision_info:
+	# 	CollisionManager.handle_collision(self, collision_info.collider)
 
 
 func set_speed(new_speed: int) -> void:
 	speed = new_speed
+
+
+func set_final_position(pos: Vector2):
+	final_position = pos
+
+
+func move_to_final_position():
+	can_move_to_final_position = true
 
 
 func play_death_animation() -> void:

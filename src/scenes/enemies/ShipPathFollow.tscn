@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/enemies/ShipPathFollow.gd" type="Script" id=1]
+
+[node name="ShipPathFollow" type="PathFollow2D"]
+position = Vector2( 73.2876, 430.108 )
+rotation = -0.992154
+loop = false
+script = ExtResource( 1 )
