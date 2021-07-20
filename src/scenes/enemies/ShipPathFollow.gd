@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 	if not reached_end:
 		if unit_offset == 1:
 			reached_end = true
-			emit_signal("reached_end", get_child(0))
+			emit_signal("reached_end")
 		else:
 			offset += speed * delta
 

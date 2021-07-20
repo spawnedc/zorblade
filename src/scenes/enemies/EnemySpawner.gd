@@ -1,21 +1,17 @@
 extends Node2D
 
 onready var dynamic_path: Path2D = $dynamicPath
+onready var dynamic_paths: Node2D = $dynamicPaths
 onready var spawnTimer: Timer = $spawnTimer
 
-var max_x_position: int = 0
 const MIN_SPEED = 200
 const MAX_SPEED = 400
-const MAX_ENEMIES = 20
 const SPAWN_RATE = 0.5
-var current_row = 0
-var current_column = 0
 
 var enemy_scene = preload('res://scenes/enemies/EnemyBlack.tscn')
 var ship_path_follow = preload('res://scenes/enemies/ShipPathFollow.tscn')
-var enemy_count: int = 0
-var enemy_start_point: Vector2
-var enemy_path_follow
+
+var timer_call_counts = Array()
 
 
 func array_to_curve(input: Array, dist: float = 0) -> Curve2D:
@@ -38,56 +34,74 @@ func array_to_curve(input: Array, dist: float = 0) -> Curve2D:
 	return curve
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var curve_points = [
-		Vector2(100, -50),
-		Vector2(100, 500),
-		Vector2(200, 500),
-		Vector2(200, 100),
-	]
-	var curve: Curve2D = array_to_curve(curve_points, 100)
-	enemy_start_point = curve_points[0]
+func _create_paths(level_data: Dictionary):
+	var paths = level_data["paths"]
 
-	dynamic_path.curve = curve
-	max_x_position = Globals.VIEWPORT_SIZE.x - 100
-	spawnTimer.connect('timeout', self, '_on_timer_timeout')
-	spawnTimer.wait_time = SPAWN_RATE
-	spawnTimer.start()
+	for index in len(paths):
+		timer_call_counts.append(0)
+		var path = paths[index]
+		var path_2d: Path2D = Path2D.new()
+		var curve_points = Array()
+
+		for point in path["points"]:
+			curve_points.append(Vector2(point["x"], point["y"]))
+
+		var curve: Curve2D = array_to_curve(curve_points, 100)
+		var start_point = curve_points[0]
+
+		path_2d.curve = curve
+
+		dynamic_paths.add_child(path_2d)
+
+		var timer: Timer = Timer.new()
+		timer.autostart = false
+		timer.one_shot = true
+		timer.wait_time = SPAWN_RATE  # TODO: read this from level data
+		timer.connect(
+			"timeout", self, "_on_path_timer_timeout", [timer, path_2d, start_point, index]
+		)
+
+		dynamic_paths.add_child(timer)
+
+		timer.start()
 
 
-func _on_timer_timeout() -> void:
-	enemy_path_follow = ship_path_follow.instance()
-	dynamic_path.add_child(enemy_path_follow)
-	enemy_path_follow.connect("reached_end", self, "_on_reached_end")
-
-	var enemy = $spawner.spawn(enemy_scene, enemy_path_follow)
+func _on_path_timer_timeout(timer, path_2d, start_point, path_index) -> void:
+	print(start_point)
 	var speed = MAX_SPEED
-	enemy_path_follow.set_speed(speed)
+	var path_follow = ship_path_follow.instance()
+	var enemy = $spawner.spawn(enemy_scene, path_follow)
+	var enemy_index = timer_call_counts[path_index]
+	var final_position = GameManager.get_final_position(path_index, enemy_index)
+	print(final_position)
+
+	path_follow.set_speed(speed)
+	path_follow.connect("reached_end", self, "_on_enemy_reached_path_end", [enemy])
+
+	path_2d.add_child(path_follow)
 
 	enemy.add_to_group(Globals.GROUP_ENEMY)
 	enemy.set_speed(speed)
 	enemy.global_rotation_degrees = 0
-	enemy.global_position = enemy_start_point
+	enemy.global_position = start_point
+	enemy.set_final_position(final_position)
 	enemy.connect("dead", self, "_on_enemy_dead")
 
-	var row: int = enemy_count / 5
+	timer_call_counts[path_index] += 1
 
-	if row != current_row:
-		current_row = row
-		current_column = 0
-	else:
-		current_column = enemy_count % 5
+	var enemy_count = timer_call_counts[path_index]
 
-	var x_pos = 400 - (current_column * 50)
-	var y_pos = 100 + (current_row * 50)
-	var final_position: Vector2 = Vector2(x_pos, y_pos)
-	enemy.set_final_position(final_position)
+	if enemy_count < GameManager.get_max_enemies(path_index):
+		timer.start()
 
-	enemy_count += 1
 
-	if enemy_count < MAX_ENEMIES:
-		spawnTimer.start()
+func _on_enemy_reached_path_end(enemy) -> void:
+	enemy.move_to_final_position()
+
+
+func _ready():
+	var level_data = GameManager.set_level(1)
+	_create_paths(level_data)
 
 
 func _on_reached_end(enemy):
