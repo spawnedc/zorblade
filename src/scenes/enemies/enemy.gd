@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal dead(enemy)
+
 const FRICTION = 20
 var speed := 200
 var direction = Vector2(0, 1)
@@ -26,10 +28,6 @@ func _physics_process(delta: float) -> void:
 			velocity = vector * speed * delta
 
 		move_and_slide(velocity)
-	# var collision_info = move_and_collide(speed * direction * delta)
-
-	# if collision_info:
-	# 	CollisionManager.handle_collision(self, collision_info.collider)
 
 
 func set_speed(new_speed: int) -> void:
@@ -45,6 +43,7 @@ func move_to_final_position():
 
 
 func play_death_animation() -> void:
+	emit_signal("dead", self)
 	set_speed(0)
 	$ship.visible = false
 	$collision.disabled = true

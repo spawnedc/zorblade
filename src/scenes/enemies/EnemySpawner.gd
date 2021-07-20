@@ -37,6 +37,7 @@ func _on_timer_timeout() -> void:
 	enemy.set_speed(speed)
 	enemy.rotation_degrees = -90
 	enemy.global_position = path.position
+	enemy.connect("dead", self, "_on_enemy_dead")
 
 	var row: int = enemy_count / 5
 
@@ -59,3 +60,7 @@ func _on_timer_timeout() -> void:
 
 func _on_reached_end(enemy):
 	enemy.move_to_final_position()
+
+
+func _on_enemy_dead(enemy):
+	enemy.get_parent().set_speed(0)
