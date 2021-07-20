@@ -27,6 +27,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity = vector * speed * delta
 
+		global_rotation_degrees = 0
+
+		# rotate(90)
+
 		move_and_slide(velocity)
 
 
