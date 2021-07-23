@@ -1,10 +1,13 @@
 extends Node
 
-var current_level: int
+signal level_change(level)
+
+const Level = preload("res://scripts/classes/Level.gd")
+var current_level: Level
 var current_level_data: Dictionary
 
 
-func set_level(level: int) -> Dictionary:
+func set_level(level: int) -> void:
 	var file = File.new()
 	file.open("res://data/levels/level" + str(level) + ".json", file.READ)
 	var text = file.get_as_text()
@@ -12,14 +15,9 @@ func set_level(level: int) -> Dictionary:
 
 	current_level_data = JSON.parse(text).result
 
-	return current_level_data
+	current_level = Level.new(current_level_data)
 
+	print('Level start: ', current_level.name)
+	print('Total enemies: ', current_level.total_enemies)
 
-func get_final_position(path_index: int, enemy_index: int) -> Vector2:
-	var pos = current_level_data["paths"][path_index]["final_positions"][enemy_index]
-
-	return Vector2(pos["x"], pos["y"])
-
-
-func get_max_enemies(path_index: int) -> int:
-	return current_level_data["paths"][path_index]["num_enemies"]
+	emit_signal("level_change", current_level)

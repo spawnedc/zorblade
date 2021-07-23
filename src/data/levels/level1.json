@@ -3,6 +3,8 @@
 	"paths": [
 		{
 			"num_enemies": 10,
+			"spawn_rate": 0.5,
+			"spawn_delay": 0,
 			"points": [
 				{
 					"x": 100,
@@ -66,6 +68,8 @@
 		},
 		{
 			"num_enemies": 10,
+			"spawn_rate": 0.5,
+			"spawn_delay": 0,
 			"points": [
 				{
 					"x": 500,
