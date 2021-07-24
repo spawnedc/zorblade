@@ -4,7 +4,7 @@ onready var player = $Container/Player
 onready var ui = $UI
 onready var countdown = $UI/Countdown
 var remaining_enemies: int = 0
-var current_level: int = 2
+var current_level: int = 1
 
 
 func _ready():
