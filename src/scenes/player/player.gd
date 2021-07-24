@@ -12,11 +12,21 @@ var velocity = Vector2.ZERO
 var speed := 300
 var current_weapon: String = 'Single Shot'
 var has_autofire: bool = false
+var size
+var min_x
+var max_x
+var min_y
+var max_y
 
 
 func _ready():
 	WeaponManager.set_weapon(current_weapon)
 	emit_signal("auto_fire_state_change", has_autofire)
+	size = $ship.get_rect().size * $ship.scale.x
+	min_x = size.x / 2
+	max_x = get_parent().rect_size.x - min_x
+	min_y = size.y / 2
+	max_y = get_parent().rect_size.y - min_y
 
 
 func _handle_weapon_keys() -> void:
@@ -56,6 +66,9 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	velocity = move_and_slide(velocity)
+
+	position.x = clamp(position.x, min_x, max_x)
+	position.y = clamp(position.y, min_y, max_y)
 
 	_handle_weapon_keys()
 	_handle_autofire()
