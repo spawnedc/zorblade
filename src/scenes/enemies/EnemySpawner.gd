@@ -2,7 +2,6 @@ extends Node2D
 
 onready var dynamic_path: Path2D = $dynamicPath
 onready var dynamic_paths: Node2D = $dynamicPaths
-onready var spawnTimer: Timer = $spawnTimer
 
 const MIN_SPEED = 200
 const MAX_SPEED = 400
@@ -40,7 +39,6 @@ func _create_paths(level: Level):
 		var path_2d: Path2D = Path2D.new()
 
 		var curve: Curve2D = Utils.array_to_curve(path.points, path.curve_smoothness)
-		var start_point = path.points[0]
 
 		path_2d.curve = curve
 
@@ -50,21 +48,20 @@ func _create_paths(level: Level):
 		timer.autostart = false
 		timer.one_shot = true
 		timer.wait_time = path.spawn_rate + path.spawn_delay
-		timer.connect(
-			"timeout", self, "_on_path_timer_timeout", [timer, path_2d, start_point, index]
-		)
+		timer.connect("timeout", self, "_on_path_timer_timeout", [timer, path_2d, index])
 
 		dynamic_paths.add_child(timer)
 
 		timers.append(timer)
 
 
-func _on_path_timer_timeout(timer, path_2d, start_point, path_index) -> void:
+func _on_path_timer_timeout(timer, path_2d, path_index) -> void:
 	var level: Level = GameManager.current_level
 	var speed = MAX_SPEED
 	var path_follow = ship_path_follow.instance()
-	var enemy = $spawner.spawn(enemy_scene, path_follow)
+	var enemy = enemy_scene.instance()
 	enemy.set_texture(level.paths[path_index].sprite)
+	path_follow.add_child(enemy)
 	var enemy_index = timer_call_counts[path_index]
 	var final_position = level.get_final_position(path_index, enemy_index)
 
@@ -76,8 +73,7 @@ func _on_path_timer_timeout(timer, path_2d, start_point, path_index) -> void:
 	enemy.add_to_group(Globals.GROUP_ENEMY)
 	enemy.set_speed(speed)
 	enemy.global_rotation_degrees = 0
-	enemy.global_position = start_point
-	enemy.set_final_position(final_position)
+	enemy.set_final_position(final_position + position)
 	enemy.connect("dead", self, "_on_enemy_dead")
 
 	timer_call_counts[path_index] += 1
