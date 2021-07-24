@@ -3,6 +3,7 @@ extends Node
 signal enemy_death
 signal level_change(level)
 signal level_start
+signal game_over
 
 const Level = preload("res://scripts/classes/Level.gd")
 var current_level: Level
@@ -10,18 +11,19 @@ var current_level: Level
 
 func set_level(level: int) -> void:
 	var file = File.new()
-	file.open("res://data/levels/level" + str(level) + ".json", file.READ)
-	var text = file.get_as_text()
-	file.close()
+	var file_open_result = file.open("res://data/levels/level" + str(level) + ".json", file.READ)
 
-	var current_level_data: Dictionary = JSON.parse(text).result
+	if file_open_result != OK:
+		emit_signal("game_over")
+	else:
+		var text = file.get_as_text()
+		file.close()
 
-	current_level = Level.new(current_level_data)
+		var current_level_data: Dictionary = JSON.parse(text).result
 
-	print('Level start: ', current_level.name)
-	print('Total enemies: ', current_level.total_enemies)
+		current_level = Level.new(current_level_data)
 
-	emit_signal("level_change", current_level)
+		emit_signal("level_change", current_level)
 
 
 func enemy_dead():

@@ -4,13 +4,14 @@ onready var player = $Container/Player
 onready var ui = $UI
 onready var countdown = $UI/Countdown
 var remaining_enemies: int = 0
-var current_level: int = 1
+var current_level: int = 2
 
 
 func _ready():
 	WeaponManager.connect("weapon_change", ui, "set_weapon")
 	GameManager.connect("level_change", self, "_on_level_change")
 	GameManager.connect("enemy_death", self, "_on_enemy_death")
+	GameManager.connect("game_over", self, "_on_game_over")
 	player.connect("auto_fire_state_change", self, "_on_player_auto_fire_state_change")
 	countdown.connect("countdown_end", self, "_on_level_start_timeout")
 
@@ -41,3 +42,7 @@ func _on_enemy_death():
 
 func _on_level_start_timeout():
 	GameManager.start_level()
+
+
+func _on_game_over():
+	SceneManager.goto_scene("GameOver")
