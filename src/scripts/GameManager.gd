@@ -1,10 +1,11 @@
 extends Node
 
+signal enemy_death
 signal level_change(level)
+signal level_start
 
 const Level = preload("res://scripts/classes/Level.gd")
 var current_level: Level
-var current_level_data: Dictionary
 
 
 func set_level(level: int) -> void:
@@ -13,7 +14,7 @@ func set_level(level: int) -> void:
 	var text = file.get_as_text()
 	file.close()
 
-	current_level_data = JSON.parse(text).result
+	var current_level_data: Dictionary = JSON.parse(text).result
 
 	current_level = Level.new(current_level_data)
 
@@ -21,3 +22,11 @@ func set_level(level: int) -> void:
 	print('Total enemies: ', current_level.total_enemies)
 
 	emit_signal("level_change", current_level)
+
+
+func enemy_dead():
+	emit_signal("enemy_death")
+
+
+func start_level():
+	emit_signal("level_start")

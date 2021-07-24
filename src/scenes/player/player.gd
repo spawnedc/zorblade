@@ -16,6 +16,7 @@ var has_autofire: bool = false
 
 func _ready():
 	WeaponManager.set_weapon(current_weapon)
+	emit_signal("auto_fire_state_change", has_autofire)
 
 
 func _handle_weapon_keys() -> void:

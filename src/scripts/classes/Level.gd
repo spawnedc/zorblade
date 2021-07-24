@@ -8,6 +8,7 @@ var total_enemies: int = 0
 
 func _init(level_data):
 	name = level_data["name"]
+
 	for path_data in level_data["paths"]:
 		var path: LevelPath = LevelPath.new(path_data)
 		paths.append(path)

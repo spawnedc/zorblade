@@ -18,6 +18,8 @@ config/icon="res://icon.png"
 
 Utils="*res://scripts/Utils.gd"
 Globals="*res://scripts/Globals.gd"
+LevelPath="res://scripts/classes/LevelPath.gd"
+Level="res://scripts/classes/Level.gd"
 GameManager="*res://scripts/GameManager.gd"
 WeaponsData="*res://data/weapons_data.gd"
 WeaponManager="*res://scripts/WeaponManager.gd"

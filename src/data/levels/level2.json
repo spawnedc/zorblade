@@ -1,26 +1,26 @@
 {
-	"name": "Level 1",
+	"name": "Level 2",
 	"paths": [
 		{
 			"num_enemies": 10,
-			"spawn_rate": 0.5,
-			"spawn_delay": 0,
-			"curve_smoothness": 100,
+			"spawn_rate": 0.25,
+			"spawn_delay": 0.5,
+			"curve_smoothness": 0,
 			"points": [
 				{
-					"x": 100,
+					"x": 300,
 					"y": -50
 				},
 				{
+					"x": 300,
+					"y": 500
+				},
+				{
 					"x": 100,
 					"y": 500
 				},
 				{
-					"x": 200,
-					"y": 500
-				},
-				{
-					"x": 200,
+					"x": 100,
 					"y": 300
 				}
 			],
@@ -69,24 +69,24 @@
 		},
 		{
 			"num_enemies": 10,
-			"spawn_rate": 0.5,
+			"spawn_rate": 0.25,
 			"spawn_delay": 0,
-			"curve_smoothness": 100,
+			"curve_smoothness": 0,
 			"points": [
 				{
-					"x": 500,
+					"x": 300,
 					"y": -50
 				},
 				{
+					"x": 300,
+					"y": 500
+				},
+				{
 					"x": 500,
 					"y": 500
 				},
 				{
-					"x": 400,
-					"y": 500
-				},
-				{
-					"x": 400,
+					"x": 500,
 					"y": 300
 				}
 			],

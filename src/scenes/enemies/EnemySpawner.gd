@@ -13,15 +13,23 @@ const LevelPath = preload('res://scripts/classes/LevelPath.gd')
 const enemy_scene = preload('res://scenes/enemies/EnemyBlack.tscn')
 const ship_path_follow = preload('res://scenes/enemies/ShipPathFollow.tscn')
 
-var timer_call_counts = Array()
+var timer_call_counts: Array = []
+var timers: Array = []
 
 
 func _ready():
 	GameManager.connect("level_change", self, "_on_level_change")
-	GameManager.set_level(1)
+	GameManager.connect("level_start", self, "_on_level_start")
+
+
+func _on_level_start():
+	for timer in timers:
+		timer.start()
 
 
 func _on_level_change(level: Level):
+	timer_call_counts.clear()
+	timers.clear()
 	_create_paths(level)
 
 
@@ -31,7 +39,7 @@ func _create_paths(level: Level):
 		var path: LevelPath = level.paths[index]
 		var path_2d: Path2D = Path2D.new()
 
-		var curve: Curve2D = Utils.array_to_curve(path.points, 100)
+		var curve: Curve2D = Utils.array_to_curve(path.points, path.curve_smoothness)
 		var start_point = path.points[0]
 
 		path_2d.curve = curve
@@ -48,7 +56,7 @@ func _create_paths(level: Level):
 
 		dynamic_paths.add_child(timer)
 
-		timer.start()
+		timers.append(timer)
 
 
 func _on_path_timer_timeout(timer, path_2d, start_point, path_index) -> void:
@@ -85,4 +93,5 @@ func _on_enemy_reached_path_end(enemy) -> void:
 
 
 func _on_enemy_dead(enemy):
+	GameManager.enemy_dead()
 	enemy.get_parent().set_speed(0)

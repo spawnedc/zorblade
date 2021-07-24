@@ -29,8 +29,6 @@ func _physics_process(delta: float) -> void:
 
 		global_rotation_degrees = 0
 
-		# rotate(90)
-
 		move_and_slide(velocity)
 
 
