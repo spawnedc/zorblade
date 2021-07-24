@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var player = $player
+onready var player = $Container/Player
 onready var ui = $UI
 onready var countdown = $UI/Countdown
 var remaining_enemies: int = 0

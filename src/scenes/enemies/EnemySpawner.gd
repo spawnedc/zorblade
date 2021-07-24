@@ -1,6 +1,5 @@
 extends Node2D
 
-onready var dynamic_path: Path2D = $dynamicPath
 onready var dynamic_paths: Node2D = $dynamicPaths
 
 const MIN_SPEED = 200
@@ -29,6 +28,10 @@ func _on_level_start():
 func _on_level_change(level: Level):
 	timer_call_counts.clear()
 	timers.clear()
+
+	for child in dynamic_paths.get_children():
+		child.queue_free()
+
 	_create_paths(level)
 
 
@@ -73,7 +76,7 @@ func _on_path_timer_timeout(timer, path_2d, path_index) -> void:
 	enemy.add_to_group(Globals.GROUP_ENEMY)
 	enemy.set_speed(speed)
 	enemy.global_rotation_degrees = 0
-	enemy.set_final_position(final_position + position)
+	enemy.set_final_position(final_position + global_position)
 	enemy.connect("dead", self, "_on_enemy_dead")
 
 	timer_call_counts[path_index] += 1
