@@ -10,7 +10,7 @@ const SPAWN_RATE = 0.5
 
 const Level = preload('res://scripts/classes/Level.gd')
 const LevelPath = preload('res://scripts/classes/LevelPath.gd')
-const enemy_scene = preload('res://scenes/enemies/EnemyBlack.tscn')
+const enemy_scene = preload('res://scenes/enemies/Enemy.tscn')
 const ship_path_follow = preload('res://scenes/enemies/ShipPathFollow.tscn')
 
 var timer_call_counts: Array = []
@@ -64,6 +64,7 @@ func _on_path_timer_timeout(timer, path_2d, start_point, path_index) -> void:
 	var speed = MAX_SPEED
 	var path_follow = ship_path_follow.instance()
 	var enemy = $spawner.spawn(enemy_scene, path_follow)
+	enemy.set_texture(level.paths[path_index].sprite)
 	var enemy_index = timer_call_counts[path_index]
 	var final_position = level.get_final_position(path_index, enemy_index)
 

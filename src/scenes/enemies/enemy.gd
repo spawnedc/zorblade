@@ -32,6 +32,10 @@ func _physics_process(delta: float) -> void:
 		move_and_slide(velocity)
 
 
+func set_texture(texture: String):
+	$ship.texture = load("res://assets/" + texture + ".png")
+
+
 func set_speed(new_speed: int) -> void:
 	speed = new_speed
 

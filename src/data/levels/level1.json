@@ -6,6 +6,7 @@
 			"spawn_rate": 0.5,
 			"spawn_delay": 0,
 			"curve_smoothness": 100,
+			"sprite": "spaceshooter/Enemies/enemyBlue2",
 			"points": [
 				{
 					"x": 100,
@@ -72,6 +73,7 @@
 			"spawn_rate": 0.5,
 			"spawn_delay": 0,
 			"curve_smoothness": 100,
+			"sprite": "spaceshooter/Enemies/enemyBlue2",
 			"points": [
 				{
 					"x": 500,

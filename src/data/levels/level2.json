@@ -6,6 +6,7 @@
 			"spawn_rate": 0.25,
 			"spawn_delay": 0.5,
 			"curve_smoothness": 0,
+			"sprite": "spaceshooter/Enemies/enemyRed5",
 			"points": [
 				{
 					"x": 300,
@@ -80,6 +81,7 @@
 			"spawn_rate": 0.25,
 			"spawn_delay": 0,
 			"curve_smoothness": 0,
+			"sprite": "spaceshooter/Enemies/enemyRed5",
 			"points": [
 				{
 					"x": 300,
