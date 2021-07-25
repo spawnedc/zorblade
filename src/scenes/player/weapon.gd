@@ -8,20 +8,8 @@ var can_fire = true
 var current_weapon
 
 
-func _ready():
-	WeaponManager.connect("weapon_change", self, "_on_weapon_change")
-
-
-func _get_scene_name(scene_name: String) -> String:
-	if scene_name.begins_with("res://"):
-		return scene_name
-
-	return 'res://scenes/weapons/' + scene_name + '.tscn'
-
-
 func _get_weapon_instance(scene_name: String) -> Resource:
-	var path = _get_scene_name(scene_name)
-	var weapon_scene = load(path)
+	var weapon_scene = load('res://scenes/weapons/' + scene_name + '.tscn')
 
 	return weapon_scene.instance()
 
@@ -40,12 +28,12 @@ func _physics_process(_delta):
 		can_fire = true
 
 
-func _on_weapon_change(weapon_data):
-	print('weapon change ' + weapon_data['name'])
+func set_weapon(weapon_data):
 	if current_weapon:
 		current_weapon.queue_free()
 
 	current_weapon = _get_weapon_instance(weapon_data['bullet_scene'])
+	current_weapon.set_damage(weapon_data["damage"])
 	fire_rate = weapon_data['fire_rate']
 
 	add_child(current_weapon)

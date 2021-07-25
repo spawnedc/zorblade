@@ -1,16 +1,20 @@
 extends KinematicBody2D
 
 signal auto_fire_state_change(state)
+signal weapon_change(weapon)
 
 const ACCELERATION = 2500
 const MAX_SPEED = 400
 const FRICTION = 2500
 
+onready var ship = $ship
+
 var velocity = Vector2.ZERO
 
 # Movement speed in pixels per second.
-var speed := 300
-var current_weapon: String = 'Single Shot'
+var speed: int = 300
+var initial_weapon: String = 'Single Shot'
+var current_weapon
 var has_autofire: bool = false
 var size
 var min_x
@@ -20,13 +24,28 @@ var max_y
 
 
 func _ready():
-	WeaponManager.set_weapon(current_weapon)
-	emit_signal("auto_fire_state_change", has_autofire)
-	size = $ship.get_rect().size * $ship.scale.x
+	print('Player ready')
+	size = ship.get_rect().size * ship.scale.x
 	min_x = size.x / 2
 	max_x = get_parent().rect_size.x - min_x
 	min_y = size.y / 2
 	max_y = get_parent().rect_size.y - min_y
+
+
+func initialise():
+	set_weapon(initial_weapon)
+	set_autofire(has_autofire)
+
+
+func set_weapon(weapon_name: String):
+	current_weapon = WeaponManager.get_weapon_data(weapon_name)
+	$weapon.set_weapon(current_weapon)
+	emit_signal("weapon_change", current_weapon)
+
+
+func set_autofire(state: bool):
+	has_autofire = state
+	emit_signal("auto_fire_state_change", has_autofire)
 
 
 func _handle_weapon_keys() -> void:
@@ -45,13 +64,12 @@ func _handle_weapon_keys() -> void:
 		new_weapon = 'Quad Shot'
 
 	if new_weapon:
-		WeaponManager.set_weapon(new_weapon)
+		set_weapon(new_weapon)
 
 
 func _handle_autofire() -> void:
 	if Input.is_action_just_pressed("toggle_autofire"):
-		has_autofire = ! has_autofire
-		emit_signal("auto_fire_state_change", has_autofire)
+		set_autofire(! has_autofire)
 
 
 func _physics_process(delta: float) -> void:
