@@ -3,11 +3,14 @@ extends KinematicBody2D
 signal dead(enemy)
 
 const FRICTION = 20
-var speed := 200
+var speed: float = 200
+var health: float
 var direction = Vector2(0, 1)
 var final_position: Vector2
 var velocity: Vector2 = Vector2.ZERO
 var can_move_to_final_position: bool = false
+
+onready var animationPlayer = $AnimationPlayer
 
 
 func _ready():
@@ -36,8 +39,12 @@ func set_texture(texture: String):
 	$ship.texture = load("res://assets/" + texture + ".png")
 
 
-func set_speed(new_speed: int) -> void:
+func set_speed(new_speed: float) -> void:
 	speed = new_speed
+
+
+func set_health(new_health: float) -> void:
+	health = new_health
 
 
 func set_final_position(pos: Vector2):
@@ -46,6 +53,15 @@ func set_final_position(pos: Vector2):
 
 func move_to_final_position():
 	can_move_to_final_position = true
+
+
+func hurt(damage: float):
+	health -= damage
+
+	if health <= 0:
+		play_death_animation()
+	else:
+		animationPlayer.play("hurt")
 
 
 func play_death_animation() -> void:

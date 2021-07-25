@@ -2,10 +2,6 @@ extends Node2D
 
 onready var dynamic_paths: Node2D = $dynamicPaths
 
-const MIN_SPEED = 200
-const MAX_SPEED = 400
-const SPAWN_RATE = 0.5
-
 const Level = preload('res://scripts/classes/Level.gd')
 const LevelPath = preload('res://scripts/classes/LevelPath.gd')
 const enemy_scene = preload('res://scenes/enemies/Enemy.tscn')
@@ -60,21 +56,23 @@ func _create_paths(level: Level):
 
 func _on_path_timer_timeout(timer, path_2d, path_index) -> void:
 	var level: Level = GameManager.current_level
-	var speed = MAX_SPEED
 	var path_follow = ship_path_follow.instance()
 	var enemy = enemy_scene.instance()
-	enemy.set_texture(level.paths[path_index].sprite)
+	enemy.set_texture(level.enemy.sprite)
+
 	path_follow.add_child(enemy)
+
 	var enemy_index = timer_call_counts[path_index]
 	var final_position = level.get_final_position(path_index, enemy_index)
 
-	path_follow.set_speed(speed)
+	path_follow.set_speed(level.enemy.speed)
 	path_follow.connect("reached_end", self, "_on_enemy_reached_path_end", [enemy])
 
 	path_2d.add_child(path_follow)
 
 	enemy.add_to_group(Globals.GROUP_ENEMY)
-	enemy.set_speed(speed)
+	enemy.set_speed(level.enemy.speed)
+	enemy.set_health(level.enemy.health)
 	enemy.global_rotation_degrees = 0
 	enemy.set_final_position(final_position + global_position)
 	enemy.connect("dead", self, "_on_enemy_dead")

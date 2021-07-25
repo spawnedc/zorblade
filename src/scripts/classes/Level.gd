@@ -1,13 +1,16 @@
 extends Object
 
 const LevelPath = preload("res://scripts/classes/LevelPath.gd")
+const LevelEnemy = preload("res://scripts/classes/LevelEnemy.gd")
 var name: String
 var paths: Array = []
 var total_enemies: int = 0
+var enemy: LevelEnemy
 
 
 func _init(level_data):
 	name = level_data["name"]
+	enemy = LevelEnemy.new(level_data["enemy"])
 
 	for path_data in level_data["paths"]:
 		var path: LevelPath = LevelPath.new(path_data)

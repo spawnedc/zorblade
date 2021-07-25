@@ -1,12 +1,16 @@
 {
 	"name": "Level 2",
+	"enemy": {
+		"sprite": "spaceshooter/Enemies/enemyRed5",
+		"health": 2,
+		"speed": 200
+	},
 	"paths": [
 		{
 			"num_enemies": 12,
 			"spawn_rate": 0.25,
 			"spawn_delay": 0.5,
 			"curve_smoothness": 0,
-			"sprite": "spaceshooter/Enemies/enemyRed5",
 			"points": [
 				{
 					"x": 300,
@@ -81,7 +85,6 @@
 			"spawn_rate": 0.25,
 			"spawn_delay": 0,
 			"curve_smoothness": 0,
-			"sprite": "spaceshooter/Enemies/enemyRed5",
 			"points": [
 				{
 					"x": 300,

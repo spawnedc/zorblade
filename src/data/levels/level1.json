@@ -1,12 +1,16 @@
 {
 	"name": "Level 1",
+	"enemy": {
+		"sprite": "spaceshooter/Enemies/enemyBlue2",
+		"health": 1,
+		"speed": 200
+	},
 	"paths": [
 		{
 			"num_enemies": 10,
 			"spawn_rate": 0.5,
 			"spawn_delay": 0,
 			"curve_smoothness": 100,
-			"sprite": "spaceshooter/Enemies/enemyBlue2",
 			"points": [
 				{
 					"x": 100,
@@ -73,7 +77,6 @@
 			"spawn_rate": 0.5,
 			"spawn_delay": 0,
 			"curve_smoothness": 100,
-			"sprite": "spaceshooter/Enemies/enemyBlue2",
 			"points": [
 				{
 					"x": 500,

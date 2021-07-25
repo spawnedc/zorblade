@@ -6,5 +6,6 @@ func handle_collision(source: KinematicBody2D, collider: KinematicBody2D):
 	var isColliderEnemy = collider.is_in_group(Globals.GROUP_ENEMY)
 
 	if isSourcePlayerBullet and isColliderEnemy:
-		collider.play_death_animation()
+		# TODO: find a better way of getting this
+		collider.hurt(WeaponManager.weapon_data["damage"])
 		source.queue_free()
