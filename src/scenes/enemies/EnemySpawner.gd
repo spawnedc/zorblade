@@ -91,5 +91,5 @@ func _on_enemy_reached_path_end(enemy) -> void:
 
 
 func _on_enemy_dead(enemy):
-	GameManager.enemy_dead()
+	GameManager.enemy_dead(enemy)
 	enemy.get_parent().set_speed(0)

@@ -18,9 +18,5 @@ spawn_scene = ExtResource( 3 )
 position = Vector2( -5, 0 )
 spawn_scene = ExtResource( 3 )
 
-[node name="bulletSpawner3" parent="bulletSpawners" instance=ExtResource( 1 )]
-position = Vector2( -5, 0 )
-spawn_scene = ExtResource( 3 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

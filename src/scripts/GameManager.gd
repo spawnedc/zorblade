@@ -1,8 +1,9 @@
 extends Node
 
-signal enemy_death
+signal enemy_death(enemy)
 signal level_change(level)
-signal level_start
+signal level_start(level)
+signal picked_powerup(powerup_data)
 signal game_over
 
 const Level = preload("res://scripts/classes/Level.gd")
@@ -26,9 +27,13 @@ func set_level(level: int) -> void:
 		emit_signal("level_change", current_level)
 
 
-func enemy_dead():
-	emit_signal("enemy_death")
+func enemy_dead(enemy):
+	emit_signal("enemy_death", enemy)
 
 
 func start_level():
 	emit_signal("level_start")
+
+
+func picked_powerup(powerup_data):
+	emit_signal("picked_powerup", powerup_data)
