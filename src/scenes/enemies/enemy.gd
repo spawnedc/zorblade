@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 signal dead(enemy)
 
@@ -9,6 +9,7 @@ var direction = Vector2(0, 1)
 var final_position: Vector2
 var velocity: Vector2 = Vector2.ZERO
 var can_move_to_final_position: bool = false
+var is_dead: bool = false
 
 onready var animationPlayer = $AnimationPlayer
 
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 
 		global_rotation_degrees = 0
 
-		move_and_slide(velocity)
+		global_position += velocity * delta
 
 
 func set_texture(texture: String):
@@ -56,20 +57,22 @@ func move_to_final_position():
 
 
 func hurt(damage: float):
-	health -= damage
+	if not is_dead:
+		health -= damage
 
-	if health <= 0:
-		play_death_animation()
-	else:
-		animationPlayer.play("hurt")
+		if health <= 0:
+			is_dead = true
+			play_death_animation()
+		else:
+			animationPlayer.play("hurt")
 
 
 func play_death_animation() -> void:
-	emit_signal("dead", self)
-	set_speed(0)
+	$collision.set_deferred("disabled", true)
 	$ship.visible = false
-	$collision.disabled = true
+	set_speed(0)
 	$deathAnimation.play()
+	emit_signal("dead", self)
 
 
 func _on_death_animation_finished() -> void:

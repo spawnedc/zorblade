@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 signal auto_fire_state_change(state)
 signal weapon_change(weapon)
@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
-	velocity = move_and_slide(velocity)
+	position += velocity * delta
 
 	position.x = clamp(position.x, min_x, max_x)
 	position.y = clamp(position.y, min_y, max_y)

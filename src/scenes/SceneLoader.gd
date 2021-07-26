@@ -36,7 +36,7 @@ func _show_scene(scene_name: String) -> void:
 	emit_signal("scene_loaded", new_scene)
 
 
-func gotoScene(scene_name: String):
+func goto_scene(scene_name: String):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
 	# Deleting the current scene at this point is

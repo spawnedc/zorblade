@@ -2,4 +2,4 @@ extends Node2D
 
 
 func _ready():
-	SceneManager.connect("change_scene", $SceneLoader, "gotoScene")
+	SceneManager.connect("change_scene", $SceneLoader, "goto_scene")

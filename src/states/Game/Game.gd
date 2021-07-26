@@ -23,7 +23,6 @@ func _ready():
 
 
 func _on_level_change(level: Level):
-	print('level change')
 	remaining_enemies = level.total_enemies
 	ui.set_level(level)
 	countdown.start(Globals.LEVEL_START_DELAY, level.name + " starts in")

@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.2997, 16.5009 )
 
-[node name="DoubleShot" type="KinematicBody2D"]
+[node name="DoubleShot" type="Area2D"]
 collision_layer = 16
 script = ExtResource( 3 )
 

@@ -342,3 +342,4 @@ frames = SubResource( 65 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 pitch_scale = 0.5
+bus = "EnemyDeath"

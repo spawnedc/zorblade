@@ -7,7 +7,7 @@
 radius = 3.53925
 height = 11.175
 
-[node name="LaserGreen" type="KinematicBody2D"]
+[node name="LaserGreen" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 2 )

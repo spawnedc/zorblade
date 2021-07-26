@@ -1,6 +1,4 @@
-extends KinematicBody2D
-
-signal collided(powerup)
+extends Area2D
 
 onready var collision = $collision
 
@@ -17,8 +15,4 @@ func _physics_process(delta: float) -> void:
 	if position.y < 0:
 		queue_free()
 	else:
-		var collision_info = move_and_collide(speed * direction * delta)
-
-		if collision_info:
-			collision.disabled = true
-			emit_signal("collided", self)
+		position += speed * direction * delta

@@ -1,10 +1,11 @@
 extends Node
 
 
-func handle_collision(source: KinematicBody2D, collider: KinematicBody2D, damage: float):
-	var isSourcePlayerBullet = source.is_in_group(Globals.GROUP_PLAYER_BULLET)
-	var isColliderEnemy = collider.is_in_group(Globals.GROUP_ENEMY)
+func handle_bullet_hit_enemy(enemy: Area2D, bullet: Area2D, damage: float):
+	bullet.queue_free()
+	enemy.hurt(damage)
 
-	if isSourcePlayerBullet and isColliderEnemy:
-		collider.hurt(damage)
-		source.queue_free()
+
+func handle_player_picked_up_powerup(_player: Area2D, powerup: Area2D, powerup_data: Dictionary):
+	powerup.queue_free()
+	GameManager.picked_powerup(powerup_data)

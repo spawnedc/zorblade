@@ -28,9 +28,9 @@ func _on_enemy_death(enemy):
 		var powerup = spawner.spawn(powerup_scene)
 		powerup.global_position = enemy.global_position
 		powerup.set_powerup_data(powerup_data)
-		powerup.connect("collided", self, "_on_powerup_collision", [powerup_data])
-
-
-func _on_powerup_collision(powerup, powerup_data):
-	powerup.queue_free()
-	GameManager.picked_powerup(powerup_data)
+		powerup.connect(
+			"area_entered",
+			CollisionManager,
+			"handle_player_picked_up_powerup",
+			[powerup, powerup_data]
+		)
