@@ -16,7 +16,7 @@ func _get_weapon_instance(scene_name: String) -> Resource:
 
 func fire():
 	if can_fire:
-		current_weapon.fire()
+		current_weapon.fire(self)
 		can_fire = false
 		fire_timer = 0
 
