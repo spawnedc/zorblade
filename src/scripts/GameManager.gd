@@ -1,6 +1,7 @@
 extends Node
 
 signal enemy_death(enemy)
+signal enemy_removed(enemy)
 signal level_change(level)
 signal level_start(level)
 signal picked_powerup(powerup_data)
@@ -29,6 +30,10 @@ func set_level(level: int) -> void:
 
 func enemy_dead(enemy):
 	emit_signal("enemy_death", enemy)
+
+
+func enemy_removed(enemy):
+	emit_signal("enemy_removed", enemy)
 
 
 func start_level():

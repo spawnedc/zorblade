@@ -75,7 +75,8 @@ func _on_path_timer_timeout(timer, path_2d, path_index) -> void:
 	enemy.set_health(level.enemy.health)
 	enemy.global_rotation_degrees = 0
 	enemy.set_final_position(final_position + global_position)
-	enemy.connect("dead", self, "_on_enemy_dead")
+	enemy.connect("dead", self, "_on_enemy_dead", [enemy, path_follow])
+	enemy.connect("ready_to_be_removed", self, "_on_enemy_ready_to_be_removed", [enemy])
 
 	timer_call_counts[path_index] += 1
 
@@ -90,6 +91,11 @@ func _on_enemy_reached_path_end(enemy) -> void:
 	enemy.move_to_final_position()
 
 
-func _on_enemy_dead(enemy):
+func _on_enemy_dead(enemy, path_follow):
 	GameManager.enemy_dead(enemy)
-	enemy.get_parent().set_speed(0)
+	path_follow.set_speed(0)
+
+
+func _on_enemy_ready_to_be_removed(enemy):
+	GameManager.enemy_removed(enemy)
+	enemy.queue_free()

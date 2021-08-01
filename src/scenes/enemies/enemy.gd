@@ -1,6 +1,7 @@
 extends Area2D
 
-signal dead(enemy)
+signal dead
+signal ready_to_be_removed
 
 const FRICTION = 20
 var speed: float = 200
@@ -72,8 +73,9 @@ func play_death_animation() -> void:
 	$ship.visible = false
 	set_speed(0)
 	$deathAnimation.play()
-	emit_signal("dead", self)
+	emit_signal("dead")
 
 
 func _on_death_animation_finished() -> void:
-	queue_free()
+	# queue_free()
+	emit_signal("ready_to_be_removed")

@@ -4,12 +4,14 @@ onready var player = $Container/Player
 onready var ui = $UI
 onready var countdown = $UI/Countdown
 var remaining_enemies: int = 0
+var remaining_enemies_to_remove: int = 0
 var current_level: int = 1
 
 
 func _ready():
 	GameManager.connect("level_change", self, "_on_level_change")
 	GameManager.connect("enemy_death", self, "_on_enemy_death")
+	GameManager.connect("enemy_removed", self, "_on_enemy_removed")
 	GameManager.connect("game_over", self, "_on_game_over")
 	GameManager.connect("picked_powerup", self, "_on_picked_powerup")
 
@@ -24,6 +26,8 @@ func _ready():
 
 func _on_level_change(level: Level):
 	remaining_enemies = level.total_enemies
+	remaining_enemies_to_remove = remaining_enemies
+
 	ui.set_level(level)
 	countdown.start(Globals.LEVEL_START_DELAY, level.name + " starts in")
 
@@ -40,7 +44,11 @@ func _on_enemy_death(_enemy):
 	remaining_enemies -= 1
 	ui.set_remaining_enemies(remaining_enemies)
 
-	if remaining_enemies == 0:
+
+func _on_enemy_removed(_enemy):
+	remaining_enemies_to_remove -= 1
+
+	if remaining_enemies_to_remove == 0:
 		# TODO: End game?
 		current_level += 1
 		GameManager.set_level(current_level)
