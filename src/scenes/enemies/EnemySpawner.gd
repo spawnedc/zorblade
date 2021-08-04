@@ -58,15 +58,13 @@ func _on_path_timer_timeout(timer, path_2d, path_index) -> void:
 	var level: Level = GameManager.current_level
 	var path_follow = ship_path_follow.instance()
 	var enemy = enemy_scene.instance()
-	enemy.set_texture(level.enemy.sprite)
+	enemy.set_texture(level.enemy.sprite, level.enemy.scale)
 
 	path_follow.add_child(enemy)
 
-	var enemy_index = timer_call_counts[path_index]
-	var final_position = level.get_final_position(path_index, enemy_index)
-
 	path_follow.set_speed(level.enemy.speed)
-	path_follow.connect("reached_end", self, "_on_enemy_reached_path_end", [enemy])
+	path_follow.loop = level.paths[path_index].loop
+	path_follow.rotate = level.paths[path_index].rotate
 
 	path_2d.add_child(path_follow)
 
@@ -74,9 +72,14 @@ func _on_path_timer_timeout(timer, path_2d, path_index) -> void:
 	enemy.set_speed(level.enemy.speed)
 	enemy.set_health(level.enemy.health)
 	enemy.global_rotation_degrees = 0
-	enemy.set_final_position(final_position + global_position)
 	enemy.connect("dead", self, "_on_enemy_dead", [enemy, path_follow])
 	enemy.connect("ready_to_be_removed", self, "_on_enemy_ready_to_be_removed", [enemy])
+
+	if path_follow.loop == false:
+		var enemy_index = timer_call_counts[path_index]
+		var final_position = level.get_final_position(path_index, enemy_index)
+		enemy.set_final_position(final_position + global_position)
+		path_follow.connect("reached_end", self, "_on_enemy_reached_path_end", [enemy])
 
 	timer_call_counts[path_index] += 1
 

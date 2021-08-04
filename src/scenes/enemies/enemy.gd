@@ -37,8 +37,11 @@ func _physics_process(delta: float) -> void:
 		global_position += velocity * delta
 
 
-func set_texture(texture: String):
+func set_texture(texture: String, scale: float):
 	$ship.texture = load("res://assets/" + texture + ".png")
+	$collision.shape.set_radius($ship.texture.get_width() * scale)
+	$collision.scale = Vector2(scale, scale)
+	$ship.scale = Vector2(scale, scale)
 
 
 func set_speed(new_speed: float) -> void:

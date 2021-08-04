@@ -1,0 +1,43 @@
+{
+	"name": "Level 3",
+	"music": "SkyFire/DeathMatch (Boss Theme)",
+	"enemy": {
+		"sprite": "spaceshooter-extension/Ships/spaceShips_007",
+		"scale": 0.7,
+		"health": 50,
+		"speed": 200
+	},
+	"paths": [
+		{
+			"num_enemies": 1,
+			"spawn_rate": 0.25,
+			"spawn_delay": 0.5,
+			"curve_smoothness": 100,
+			"loop": true,
+			"rotate": false,
+			"points": [
+				{
+					"x": 300,
+					"y": -50
+				},
+				{
+					"x": 300,
+					"y": 500
+				},
+				{
+					"x": 100,
+					"y": 500
+				},
+				{
+					"x": 100,
+					"y": 300
+				},
+				{
+					"x": 300,
+					"y": -50
+				}
+			],
+			"final_positions": []
+		}
+	]
+}

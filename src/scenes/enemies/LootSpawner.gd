@@ -7,7 +7,7 @@ const powerups = [
 	{"name": "QuadShot", "weapon": "Quad Shot"},
 	{"name": "AutoFire", "autofire": true}
 ]
-const drop_rate = 25  # percent
+const drop_rate = 5  # percent
 
 onready var spawner = $spawner
 
