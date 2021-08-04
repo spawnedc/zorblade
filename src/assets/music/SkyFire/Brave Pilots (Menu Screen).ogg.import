@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Brave Pilots (Menu Screen).ogg-e7b8761bfcde1f52756f6d0edeba9f96.oggstr"
+
+[deps]
+
+source_file="res://assets/music/SkyFire/Brave Pilots (Menu Screen).ogg"
+dest_files=[ "res://.import/Brave Pilots (Menu Screen).ogg-e7b8761bfcde1f52756f6d0edeba9f96.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

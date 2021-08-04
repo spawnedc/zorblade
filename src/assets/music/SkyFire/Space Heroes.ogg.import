@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Space Heroes.ogg-485e8f3d24ca2c27feca7f98286b1f39.oggstr"
+
+[deps]
+
+source_file="res://assets/music/SkyFire/Space Heroes.ogg"
+dest_files=[ "res://.import/Space Heroes.ogg-485e8f3d24ca2c27feca7f98286b1f39.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
