@@ -25,6 +25,7 @@ WeaponsData="*res://data/weapons_data.gd"
 WeaponManager="*res://scripts/WeaponManager.gd"
 CollisionManager="*res://scripts/CollisionManager.gd"
 SceneManager="*res://scripts/SceneManager.gd"
+MusicManager="*res://scripts/MusicManager.gd"
 
 [display]
 

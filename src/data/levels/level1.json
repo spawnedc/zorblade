@@ -1,5 +1,6 @@
 {
 	"name": "Level 1",
+	"music": "SkyFire/Without Fear",
 	"enemy": {
 		"sprite": "spaceshooter/Enemies/enemyBlue2",
 		"health": 1,

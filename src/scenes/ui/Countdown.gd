@@ -7,6 +7,7 @@ onready var label = $Label
 export var countdown_from: int
 var countdown: int
 var label_prefix: String
+export var show_countdown: bool = false
 
 
 func _ready():
@@ -15,12 +16,15 @@ func _ready():
 
 
 func _set_label():
-	if label_prefix != "":
-		label.text = label_prefix + " "
+	if show_countdown == false:
+		label.text = label_prefix
 	else:
-		label.text = ""
+		if label_prefix != "":
+			label.text = label_prefix + " "
+		else:
+			label.text = ""
 
-	label.text += String(countdown)
+		label.text += String(countdown)
 
 
 func start(number: int, prefix: String = ""):

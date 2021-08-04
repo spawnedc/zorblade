@@ -6,10 +6,12 @@ var name: String
 var paths: Array = []
 var total_enemies: int = 0
 var enemy: LevelEnemy
+var music: String
 
 
 func _init(level_data):
 	name = level_data["name"]
+	music = level_data["music"]
 	enemy = LevelEnemy.new(level_data["enemy"])
 
 	for path_data in level_data["paths"]:
