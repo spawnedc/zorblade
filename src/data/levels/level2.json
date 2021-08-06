@@ -3,12 +3,12 @@
 	"enemy": {
 		"sprite": "spaceshooter/Enemies/enemyRed5",
 		"health": 2,
-		"speed": 200
+		"speed": 400
 	},
 	"paths": [
 		{
 			"num_enemies": 12,
-			"spawn_rate": 0.25,
+			"spawn_rate": 0.2,
 			"spawn_delay": 0.5,
 			"curve_smoothness": 0,
 			"points": [
@@ -82,7 +82,7 @@
 		},
 		{
 			"num_enemies": 12,
-			"spawn_rate": 0.25,
+			"spawn_rate": 0.2,
 			"spawn_delay": 0,
 			"curve_smoothness": 0,
 			"points": [
