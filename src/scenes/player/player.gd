@@ -2,16 +2,20 @@ extends Area2D
 
 signal auto_fire_state_change(state)
 signal weapon_change(weapon)
+signal speed_change(speed)
+signal bullet_count_change(bullet_count)
+signal lives_change(lives)
 
 onready var ship: Sprite = $ship
 onready var weapon: Node2D = $weapon
 
 # Movement speed in pixels per second.
-var speed: int = 300
-var initial_weapon: String = 'Single Shot'
-var bullets: int = 10
+var speed: int
+var lives: int
+var initial_weapon: String
+var bullet_count: int
+var has_autofire: bool
 var current_weapon
-var has_autofire: bool = false
 var size: Vector2
 var min_x: float
 var max_x: float
@@ -29,20 +33,43 @@ func _ready():
 
 
 func initialise() -> void:
-	weapon.set_max_bullet_count(bullets)
-	set_weapon(initial_weapon)
-	set_autofire(has_autofire)
+	var defaults = Defaults.player
+	set_weapon(defaults["initial_weapon"])
+	set_autofire(defaults["has_autofire"])
+	set_speed(defaults["speed"])
+	set_bullet_count(defaults["bullet_count"])
+	set_lives(defaults["lives"])
+
+
+func set_lives(new_lives: int) -> void:
+	lives = new_lives
+	emit_signal("lives_change", lives)
 
 
 func set_weapon(weapon_name: String) -> void:
 	current_weapon = WeaponManager.get_weapon_data(weapon_name)
 	weapon.set_weapon(current_weapon)
+	print("Player: weapon_change: ", current_weapon)
 	emit_signal("weapon_change", current_weapon)
 
 
 func set_autofire(state: bool) -> void:
 	has_autofire = state
+	print("Player: auto_fire_state_change: ", has_autofire)
 	emit_signal("auto_fire_state_change", has_autofire)
+
+
+func set_speed(new_speed: int) -> void:
+	speed = new_speed
+	print("Player: speed_change: ", speed)
+	emit_signal("speed_change", speed)
+
+
+func set_bullet_count(new_bullet_count: int) -> void:
+	bullet_count = new_bullet_count
+	weapon.set_max_bullet_count(bullet_count)
+	print("Player: bullet_count_change: ", bullet_count)
+	emit_signal("bullet_count_change", bullet_count)
 
 
 func _handle_weapon_keys() -> void:

@@ -1,0 +1,9 @@
+{
+	"player": {
+		"speed": 300,
+		"initial_weapon": "Single Shot",
+		"bullet_count": 10,
+		"has_autofire": false,
+		"lives": 3
+	}
+}

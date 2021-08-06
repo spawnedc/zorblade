@@ -1,12 +1,80 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/ui/ui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/Countdown.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/Grid.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/playerLife1_blue.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 0.0588235, 0.501961, 0.619608, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=5]
+color = Color( 0.12549, 0.466667, 0.0313726, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Borders" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftTexture" type="TextureRect" parent="Borders"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_right = 100.0
+margin_bottom = 800.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftBorder" type="ColorRect" parent="Borders"]
+margin_left = 100.0
+margin_right = 101.0
+margin_bottom = 800.0
+color = Color( 1, 1, 1, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightTexture" type="TextureRect" parent="Borders"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 700.0
+margin_right = 800.0
+margin_bottom = 800.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightBorder" type="ColorRect" parent="Borders"]
+margin_left = 700.0
+margin_right = 701.0
+margin_bottom = 800.0
+color = Color( 1, 1, 1, 0.501961 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -19,10 +87,10 @@ margin_top = 20.0
 margin_right = 780.0
 margin_bottom = 780.0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="DebugUI" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
+margin_left = 710.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
@@ -30,13 +98,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 780.0
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugUI"]
+margin_right = 80.0
 margin_bottom = 780.0
 custom_constants/separation = 20
 
-[node name="Autofire" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 780.0
+[node name="Autofire" type="HBoxContainer" parent="DebugUI/VBoxContainer"]
+margin_right = 80.0
 margin_bottom = 21.0
 size_flags_vertical = 0
 custom_constants/separation = 5
@@ -44,36 +112,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Autofire"]
+[node name="Label" type="Label" parent="DebugUI/VBoxContainer/Autofire"]
 margin_right = 54.0
 margin_bottom = 21.0
 text = "Autofire:"
 
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/Autofire"]
+[node name="Value" type="Label" parent="DebugUI/VBoxContainer/Autofire"]
 margin_left = 59.0
 margin_right = 59.0
 margin_bottom = 21.0
 
-[node name="CurrentWeapon" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="CurrentWeapon" type="VBoxContainer" parent="DebugUI/VBoxContainer"]
 margin_top = 41.0
-margin_right = 780.0
+margin_right = 80.0
 margin_bottom = 88.0
 size_flags_vertical = 0
 custom_constants/separation = 5
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CurrentWeapon"]
-margin_right = 780.0
+[node name="Label" type="Label" parent="DebugUI/VBoxContainer/CurrentWeapon"]
+margin_right = 80.0
 margin_bottom = 21.0
 text = "Weapon:"
 
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/CurrentWeapon"]
+[node name="Value" type="Label" parent="DebugUI/VBoxContainer/CurrentWeapon"]
 margin_top = 26.0
-margin_right = 780.0
+margin_right = 80.0
 margin_bottom = 47.0
 
-[node name="CurrentLevel" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="CurrentLevel" type="HBoxContainer" parent="DebugUI/VBoxContainer"]
 margin_top = 108.0
-margin_right = 780.0
+margin_right = 80.0
 margin_bottom = 129.0
 size_flags_vertical = 0
 custom_constants/separation = 5
@@ -81,24 +149,113 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/CurrentLevel"]
+[node name="Value" type="Label" parent="DebugUI/VBoxContainer/CurrentLevel"]
 margin_right = 51.0
 margin_bottom = 21.0
 text = "Level 1"
 
-[node name="RemainingEnemies" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="RemainingEnemies" type="VBoxContainer" parent="DebugUI/VBoxContainer"]
 margin_top = 149.0
-margin_right = 780.0
+margin_right = 80.0
 margin_bottom = 196.0
 size_flags_vertical = 0
 custom_constants/separation = 5
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/RemainingEnemies"]
-margin_right = 780.0
+[node name="Label" type="Label" parent="DebugUI/VBoxContainer/RemainingEnemies"]
+margin_right = 80.0
 margin_bottom = 21.0
 text = "Enemies:"
 
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/RemainingEnemies"]
+[node name="Value" type="Label" parent="DebugUI/VBoxContainer/RemainingEnemies"]
 margin_top = 26.0
-margin_right = 780.0
+margin_right = 80.0
 margin_bottom = 47.0
+
+[node name="ActualUI" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -710.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UiContainer" type="VBoxContainer" parent="ActualUI"]
+margin_right = 80.0
+margin_bottom = 780.0
+custom_constants/separation = 10
+
+[node name="Lives" type="MarginContainer" parent="ActualUI/UiContainer"]
+margin_right = 80.0
+margin_bottom = 13.0
+
+[node name="Lives" type="TextureProgress" parent="ActualUI/UiContainer/Lives"]
+margin_right = 80.0
+margin_bottom = 13.0
+max_value = 5.0
+value = 1.0
+texture_progress = ExtResource( 4 )
+
+[node name="Speed" type="VBoxContainer" parent="ActualUI/UiContainer"]
+margin_top = 23.0
+margin_right = 80.0
+margin_bottom = 54.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="ActualUI/UiContainer/Speed"]
+margin_right = 80.0
+margin_bottom = 21.0
+text = "Speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ProgressBar" parent="ActualUI/UiContainer/Speed"]
+margin_top = 21.0
+margin_right = 80.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+max_value = 1000.0
+percent_visible = false
+
+[node name="Bullet" type="VBoxContainer" parent="ActualUI/UiContainer"]
+margin_top = 64.0
+margin_right = 80.0
+margin_bottom = 95.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="ActualUI/UiContainer/Bullet"]
+margin_right = 80.0
+margin_bottom = 21.0
+text = "Bullets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ProgressBar" parent="ActualUI/UiContainer/Bullet"]
+margin_top = 21.0
+margin_right = 80.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 4 )
+max_value = 50.0
+percent_visible = false
+
+[node name="Filler" type="Control" parent="ActualUI/UiContainer"]
+margin_top = 105.0
+margin_right = 80.0
+margin_bottom = 749.0
+size_flags_vertical = 3
+
+[node name="LevelInfo" type="Label" parent="ActualUI/UiContainer"]
+margin_top = 759.0
+margin_right = 80.0
+margin_bottom = 780.0
+text = "Level 1"

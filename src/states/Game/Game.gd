@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 onready var player = $Container/Player
 onready var ui = $UI
@@ -16,8 +16,11 @@ func _ready():
 	GameManager.connect("game_over", self, "_on_game_over")
 	GameManager.connect("picked_powerup", self, "_on_picked_powerup")
 
-	player.connect("auto_fire_state_change", self, "_on_player_auto_fire_state_change")
-	player.connect("weapon_change", self, "_on_player_weapon_change")
+	player.connect("auto_fire_state_change", ui, "set_auto_fire_state")
+	player.connect("weapon_change", ui, "set_weapon")
+	player.connect("speed_change", ui, "set_speed")
+	player.connect("bullet_count_change", ui, "set_bullet_count")
+	player.connect("lives_change", ui, "set_lives")
 
 	countdown.connect("countdown_end", self, "_on_level_start_timeout")
 
@@ -39,14 +42,6 @@ func _on_level_change(level: Level):
 	else:
 		if current_level.music:
 			MusicManager.stop()
-
-
-func _on_player_auto_fire_state_change(has_autofire: bool):
-	ui.set_auto_fire_state(has_autofire)
-
-
-func _on_player_weapon_change(weapon_data):
-	ui.set_weapon(weapon_data)
 
 
 func _on_enemy_death(_enemy):

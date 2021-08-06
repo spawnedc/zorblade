@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Utils="*res://scripts/Utils.gd"
+Defaults="*res://scripts/Defaults.gd"
 Globals="*res://scripts/Globals.gd"
 LevelPath="res://scripts/classes/LevelPath.gd"
 Level="res://scripts/classes/Level.gd"
