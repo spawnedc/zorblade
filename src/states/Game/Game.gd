@@ -34,9 +34,11 @@ func _on_level_change(level: Level):
 	countdown.start(Globals.LEVEL_START_DELAY, level.name)
 
 	if current_level_number == 1:
-		MusicManager.play(current_level.music)
+		if current_level.music:
+			MusicManager.play(current_level.music)
 	else:
-		MusicManager.stop()
+		if current_level.music:
+			MusicManager.stop()
 
 
 func _on_player_auto_fire_state_change(has_autofire: bool):
@@ -65,7 +67,8 @@ func _on_level_start_timeout():
 	GameManager.start_level()
 
 	if current_level_number > 1:
-		MusicManager.play(current_level.music)
+		if current_level.music:
+			MusicManager.play(current_level.music)
 
 
 func _on_game_over():
