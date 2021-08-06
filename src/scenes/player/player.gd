@@ -3,24 +3,20 @@ extends Area2D
 signal auto_fire_state_change(state)
 signal weapon_change(weapon)
 
-const ACCELERATION = 2500
-const MAX_SPEED = 400
-const FRICTION = 2500
-
-onready var ship = $ship
-
-var velocity = Vector2.ZERO
+onready var ship: Sprite = $ship
+onready var weapon: Node2D = $weapon
 
 # Movement speed in pixels per second.
 var speed: int = 300
 var initial_weapon: String = 'Single Shot'
+var bullets: int = 10
 var current_weapon
 var has_autofire: bool = false
-var size
-var min_x
-var max_x
-var min_y
-var max_y
+var size: Vector2
+var min_x: float
+var max_x: float
+var min_y: float
+var max_y: float
 
 
 func _ready():
@@ -32,18 +28,19 @@ func _ready():
 	max_y = get_parent().rect_size.y - min_y
 
 
-func initialise():
+func initialise() -> void:
+	weapon.set_max_bullet_count(bullets)
 	set_weapon(initial_weapon)
 	set_autofire(has_autofire)
 
 
-func set_weapon(weapon_name: String):
+func set_weapon(weapon_name: String) -> void:
 	current_weapon = WeaponManager.get_weapon_data(weapon_name)
-	$weapon.set_weapon(current_weapon)
+	weapon.set_weapon(current_weapon)
 	emit_signal("weapon_change", current_weapon)
 
 
-func set_autofire(state: bool):
+func set_autofire(state: bool) -> void:
 	has_autofire = state
 	emit_signal("auto_fire_state_change", has_autofire)
 
@@ -72,18 +69,22 @@ func _handle_autofire() -> void:
 		set_autofire(! has_autofire)
 
 
+func _handle_weapon_fire() -> void:
+	if has_autofire:
+		if Input.is_action_pressed("fire"):
+			weapon.fire()
+	else:
+		if Input.is_action_just_pressed("fire"):
+			weapon.fire()
+
+
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	input_vector = input_vector.normalized()
 
-	if input_vector != Vector2.ZERO:
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-
-	position += velocity * delta
+	position += input_vector * speed * delta
 
 	position.x = clamp(position.x, min_x, max_x)
 	position.y = clamp(position.y, min_y, max_y)
@@ -91,9 +92,4 @@ func _physics_process(delta: float) -> void:
 	_handle_weapon_keys()
 	_handle_autofire()
 
-	if has_autofire:
-		if Input.is_action_pressed("fire"):
-			$weapon.fire()
-	else:
-		if Input.is_action_just_pressed("fire"):
-			$weapon.fire()
+	_handle_weapon_fire()

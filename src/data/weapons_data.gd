@@ -1,20 +1,12 @@
 extends Node
 
-var singleShot = {
-	"name": "Single Shot", "bullet_scene": "SingleShot", "fire_rate": 0.5, "damage": 1, "speed": 200
-}
+var singleShot = {"name": "Single Shot", "bullet_scene": "SingleShot", "damage": 1}
 
-var doubleShot = {
-	"name": "Double Shot", "bullet_scene": "DoubleShot", "fire_rate": 0.5, "damage": 2, "speed": 300
-}
+var doubleShot = {"name": "Double Shot", "bullet_scene": "DoubleShot", "damage": 2}
 
-var tripleShot = {
-	"name": "Triple Shot", "bullet_scene": "TripleShot", "fire_rate": 0.3, "damage": 3, "speed": 400
-}
+var tripleShot = {"name": "Triple Shot", "bullet_scene": "TripleShot", "damage": 3}
 
-var quadShot = {
-	"name": "Quad Shot", "bullet_scene": "QuadShot", "fire_rate": 0.2, "damage": 4, "speed": 500
-}
+var quadShot = {"name": "Quad Shot", "bullet_scene": "QuadShot", "damage": 4}
 
 var weapons = {
 	"Single Shot": singleShot,
