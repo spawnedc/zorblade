@@ -11,6 +11,7 @@ onready var speed_bar: ProgressBar = $ActualUI/UiContainer/Speed/Bar
 onready var bullets_bar: ProgressBar = $ActualUI/UiContainer/Bullet/Bar
 onready var level_info: Label = $ActualUI/UiContainer/LevelInfo
 onready var player_lives: TextureProgress = $ActualUI/UiContainer/Lives/Lives
+onready var score_label: Label = $ScoreContainer/Value
 
 
 func _ready():
@@ -53,3 +54,7 @@ func set_bullet_count(bullet_count: int):
 
 func set_lives(lives: int):
 	player_lives.value = lives
+
+
+func set_score(score: int):
+	score_label.text = Utils.format_number(score)

@@ -5,19 +5,19 @@
 [ext_resource path="res://assets/ui/Grid.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/playerLife1_blue.png" type="Texture" id=4]
 
-[sub_resource type="StyleBoxLine" id=3]
+[sub_resource type="StyleBoxLine" id=1]
 color = Color( 0.0588235, 0.501961, 0.619608, 1 )
 grow_begin = 0.0
 grow_end = 0.0
 thickness = 10
 
-[sub_resource type="StyleBoxLine" id=4]
+[sub_resource type="StyleBoxLine" id=2]
 color = Color( 0.141176, 0.141176, 0.141176, 1 )
 grow_begin = 0.0
 grow_end = 0.0
 thickness = 10
 
-[sub_resource type="StyleBoxLine" id=5]
+[sub_resource type="StyleBoxLine" id=3]
 color = Color( 0.12549, 0.466667, 0.0313726, 1 )
 grow_begin = 0.0
 grow_end = 0.0
@@ -87,13 +87,98 @@ margin_top = 20.0
 margin_right = 780.0
 margin_bottom = 780.0
 
+[node name="ActualUI" type="MarginContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 90.0
+margin_bottom = 790.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UiContainer" type="VBoxContainer" parent="ActualUI"]
+margin_right = 80.0
+margin_bottom = 780.0
+custom_constants/separation = 10
+
+[node name="Lives" type="MarginContainer" parent="ActualUI/UiContainer"]
+margin_right = 80.0
+margin_bottom = 13.0
+
+[node name="Lives" type="TextureProgress" parent="ActualUI/UiContainer/Lives"]
+margin_right = 80.0
+margin_bottom = 13.0
+max_value = 5.0
+value = 1.0
+texture_progress = ExtResource( 4 )
+
+[node name="Speed" type="VBoxContainer" parent="ActualUI/UiContainer"]
+margin_top = 23.0
+margin_right = 80.0
+margin_bottom = 54.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="ActualUI/UiContainer/Speed"]
+margin_right = 80.0
+margin_bottom = 21.0
+text = "Speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ProgressBar" parent="ActualUI/UiContainer/Speed"]
+margin_top = 21.0
+margin_right = 80.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 1000.0
+percent_visible = false
+
+[node name="Bullet" type="VBoxContainer" parent="ActualUI/UiContainer"]
+margin_top = 64.0
+margin_right = 80.0
+margin_bottom = 95.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="ActualUI/UiContainer/Bullet"]
+margin_right = 80.0
+margin_bottom = 21.0
+text = "Bullets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ProgressBar" parent="ActualUI/UiContainer/Bullet"]
+margin_top = 21.0
+margin_right = 80.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 2 )
+max_value = 50.0
+percent_visible = false
+
+[node name="Filler" type="Control" parent="ActualUI/UiContainer"]
+margin_top = 105.0
+margin_right = 80.0
+margin_bottom = 749.0
+size_flags_vertical = 3
+
+[node name="LevelInfo" type="Label" parent="ActualUI/UiContainer"]
+margin_top = 759.0
+margin_right = 80.0
+margin_bottom = 780.0
+text = "Level 1"
+
 [node name="DebugUI" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 710.0
 margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_right = 790.0
+margin_bottom = 790.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -171,91 +256,25 @@ margin_top = 26.0
 margin_right = 80.0
 margin_bottom = 47.0
 
-[node name="ActualUI" type="MarginContainer" parent="."]
+[node name="ScoreContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -710.0
-margin_bottom = -10.0
+margin_left = 110.0
+margin_top = 15.0
+margin_right = -110.0
+margin_bottom = -769.0
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UiContainer" type="VBoxContainer" parent="ActualUI"]
-margin_right = 80.0
-margin_bottom = 780.0
-custom_constants/separation = 10
-
-[node name="Lives" type="MarginContainer" parent="ActualUI/UiContainer"]
-margin_right = 80.0
-margin_bottom = 13.0
-
-[node name="Lives" type="TextureProgress" parent="ActualUI/UiContainer/Lives"]
-margin_right = 80.0
-margin_bottom = 13.0
-max_value = 5.0
-value = 1.0
-texture_progress = ExtResource( 4 )
-
-[node name="Speed" type="VBoxContainer" parent="ActualUI/UiContainer"]
-margin_top = 23.0
-margin_right = 80.0
-margin_bottom = 54.0
-custom_constants/separation = 0
-
-[node name="Label" type="Label" parent="ActualUI/UiContainer/Speed"]
-margin_right = 80.0
+[node name="Score" type="Label" parent="ScoreContainer"]
+margin_left = 269.0
+margin_right = 307.0
 margin_bottom = 21.0
-text = "Speed"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Score"
 
-[node name="Bar" type="ProgressBar" parent="ActualUI/UiContainer/Speed"]
-margin_top = 21.0
-margin_right = 80.0
-margin_bottom = 31.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
-max_value = 1000.0
-percent_visible = false
-
-[node name="Bullet" type="VBoxContainer" parent="ActualUI/UiContainer"]
-margin_top = 64.0
-margin_right = 80.0
-margin_bottom = 95.0
-custom_constants/separation = 0
-
-[node name="Label" type="Label" parent="ActualUI/UiContainer/Bullet"]
-margin_right = 80.0
+[node name="Value" type="Label" parent="ScoreContainer"]
+margin_left = 311.0
+margin_right = 311.0
 margin_bottom = 21.0
-text = "Bullets"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bar" type="ProgressBar" parent="ActualUI/UiContainer/Bullet"]
-margin_top = 21.0
-margin_right = 80.0
-margin_bottom = 31.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 4 )
-max_value = 50.0
-percent_visible = false
-
-[node name="Filler" type="Control" parent="ActualUI/UiContainer"]
-margin_top = 105.0
-margin_right = 80.0
-margin_bottom = 749.0
-size_flags_vertical = 3
-
-[node name="LevelInfo" type="Label" parent="ActualUI/UiContainer"]
-margin_top = 759.0
-margin_right = 80.0
-margin_bottom = 780.0
-text = "Level 1"

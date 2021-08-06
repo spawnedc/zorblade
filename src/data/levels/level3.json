@@ -5,7 +5,8 @@
 		"sprite": "spaceshooter-extension/Ships/spaceShips_007",
 		"scale": 0.7,
 		"health": 50,
-		"speed": 200
+		"speed": 200,
+		"points": 1000
 	},
 	"paths": [
 		{

@@ -4,7 +4,8 @@
 	"enemy": {
 		"sprite": "spaceshooter/Enemies/enemyBlue2",
 		"health": 1,
-		"speed": 400
+		"speed": 400,
+		"points": 50
 	},
 	"paths": [
 		{

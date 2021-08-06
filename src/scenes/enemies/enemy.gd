@@ -11,6 +11,7 @@ var final_position: Vector2
 var velocity: Vector2 = Vector2.ZERO
 var can_move_to_final_position: bool = false
 var is_dead: bool = false
+var points: int
 
 onready var animationPlayer = $AnimationPlayer
 
@@ -54,6 +55,10 @@ func set_health(new_health: float) -> void:
 
 func set_final_position(pos: Vector2):
 	final_position = pos
+
+
+func set_points(new_points: int):
+	points = new_points
 
 
 func move_to_final_position():

@@ -19,3 +19,17 @@ func array_to_curve(input: Array, dist: float = 0) -> Curve2D:
 	curve.add_point(input[-1], -end_dir, end_dir)
 
 	return curve
+
+
+func format_number(n):
+	n = String(n)
+	var size = n.length()
+	var s = ""
+
+	for i in range(size):
+		if (size - i) % 3 == 0 and i > 0:
+			s = str(s, ",", n[i])
+		else:
+			s = str(s, n[i])
+
+	return s

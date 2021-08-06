@@ -71,6 +71,7 @@ func _on_path_timer_timeout(timer, path_2d, path_index) -> void:
 	enemy.add_to_group(Globals.GROUP_ENEMY)
 	enemy.set_speed(level.enemy.speed)
 	enemy.set_health(level.enemy.health)
+	enemy.set_points(level.enemy.points)
 	enemy.global_rotation_degrees = 0
 	enemy.connect("dead", self, "_on_enemy_dead", [enemy, path_follow])
 	enemy.connect("ready_to_be_removed", self, "_on_enemy_ready_to_be_removed", [enemy])

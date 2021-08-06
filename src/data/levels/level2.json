@@ -3,7 +3,8 @@
 	"enemy": {
 		"sprite": "spaceshooter/Enemies/enemyRed5",
 		"health": 2,
-		"speed": 400
+		"speed": 400,
+		"points": 50
 	},
 	"paths": [
 		{

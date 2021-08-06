@@ -7,6 +7,7 @@ var remaining_enemies: int = 0
 var remaining_enemies_to_remove: int = 0
 var current_level_number: int = 1
 var current_level: Level
+var score: int = 0
 
 
 func _ready():
@@ -25,6 +26,7 @@ func _ready():
 	countdown.connect("countdown_end", self, "_on_level_start_timeout")
 
 	player.initialise()
+	ui.set_score(score)
 	GameManager.set_level(current_level_number)
 
 
@@ -44,9 +46,11 @@ func _on_level_change(level: Level):
 			MusicManager.stop()
 
 
-func _on_enemy_death(_enemy):
+func _on_enemy_death(enemy):
 	remaining_enemies -= 1
 	ui.set_remaining_enemies(remaining_enemies)
+	score += enemy.points
+	ui.set_score(score)
 
 
 func _on_enemy_removed(_enemy):
