@@ -53,3 +53,14 @@ text = "Editor"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="btn_path" type="Button" parent="UI"]
+margin_left = 10.5
+margin_top = 57.5
+margin_right = 51.5
+margin_bottom = 84.5
+toggle_mode = true
+text = "Path"
+__meta__ = {
+"_edit_use_anchors_": false
+}
