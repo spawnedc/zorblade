@@ -20,7 +20,6 @@ var size: Vector2
 var min_x: float
 var max_x: float
 var min_y: float
-var max_y: float
 
 
 func _ready():
@@ -28,8 +27,6 @@ func _ready():
 	size = ship.get_rect().size * ship.scale.x
 	min_x = size.x / 2
 	max_x = get_parent().rect_size.x - min_x
-	min_y = size.y / 2
-	max_y = get_parent().rect_size.y - min_y
 
 
 func initialise() -> void:
@@ -108,13 +105,11 @@ func _handle_weapon_fire() -> void:
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	input_vector = input_vector.normalized()
 
 	position += input_vector * speed * delta
 
 	position.x = clamp(position.x, min_x, max_x)
-	position.y = clamp(position.y, min_y, max_y)
 
 	_handle_weapon_keys()
 	_handle_autofire()
