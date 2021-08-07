@@ -9,6 +9,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LeftBg" type="ColorRect" parent="."]
+margin_right = 100.0
+margin_bottom = 800.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="LeftTexture" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.501961 )
 margin_right = 100.0
@@ -25,6 +33,15 @@ margin_left = 100.0
 margin_right = 101.0
 margin_bottom = 800.0
 color = Color( 1, 1, 1, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightBg" type="ColorRect" parent="."]
+margin_left = 700.0
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
