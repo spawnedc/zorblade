@@ -12,17 +12,12 @@ var current_level: Level
 
 
 func set_level(level: int) -> void:
-	var file = File.new()
-	var file_open_result = file.open("res://data/levels/level" + str(level) + ".json", file.READ)
+	var current_level_data = Utils.load_json("levels/level" + str(level))
 
-	if file_open_result != OK:
+	if current_level_data == null:
+		print("Failed to load level data")
 		emit_signal("game_over")
 	else:
-		var text = file.get_as_text()
-		file.close()
-
-		var current_level_data: Dictionary = JSON.parse(text).result
-
 		current_level = Level.new(current_level_data)
 
 		emit_signal("level_change", current_level)

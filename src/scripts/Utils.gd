@@ -33,3 +33,16 @@ func format_number(n):
 			s = str(s, n[i])
 
 	return s
+
+
+func load_json(path: String):
+	var file = File.new()
+	var file_open_result = file.open("res://data/" + path + ".json", file.READ)
+
+	if file_open_result != OK:
+		return null
+
+	var text = file.get_as_text()
+	file.close()
+
+	return JSON.parse(text).result
