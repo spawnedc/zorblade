@@ -4,7 +4,7 @@ var zoom_speed = 0.1
 var panning = false
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_released('zoom_in'):
 		zoom_camera(-zoom_speed, event.position)
 	if event.is_action_released('zoom_out'):
