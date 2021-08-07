@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scripts/classes/Level.gd"
+}, {
+"base": "Reference",
+"class": "LevelEnemy",
+"language": "GDScript",
+"path": "res://scripts/classes/LevelEnemy.gd"
+}, {
+"base": "Reference",
+"class": "LevelPath",
+"language": "GDScript",
+"path": "res://scripts/classes/LevelPath.gd"
+} ]
+_global_script_class_icons={
+"Level": "",
+"LevelEnemy": "",
+"LevelPath": ""
+}
+
 [application]
 
 config/name="Zorblade"
@@ -19,8 +41,6 @@ config/icon="res://icon.png"
 Utils="*res://scripts/Utils.gd"
 Defaults="*res://scripts/Defaults.gd"
 Globals="*res://scripts/Globals.gd"
-LevelPath="res://scripts/classes/LevelPath.gd"
-Level="res://scripts/classes/Level.gd"
 GameManager="*res://scripts/GameManager.gd"
 WeaponsData="*res://data/weapons_data.gd"
 WeaponManager="*res://scripts/WeaponManager.gd"

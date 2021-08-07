@@ -1,4 +1,4 @@
-extends Object
+class_name LevelPath
 
 var num_enemies: int
 var spawn_rate: float
@@ -10,7 +10,7 @@ var loop: bool = false
 var rotate: bool = true
 
 
-func _init(path_data: Dictionary):
+func set_path_data(path_data: Dictionary):
 	num_enemies = path_data["num_enemies"]
 	spawn_rate = path_data["spawn_rate"]
 	spawn_delay = path_data["spawn_delay"]

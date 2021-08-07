@@ -1,7 +1,5 @@
-extends Object
+class_name Level
 
-const LevelPath = preload("res://scripts/classes/LevelPath.gd")
-const LevelEnemy = preload("res://scripts/classes/LevelEnemy.gd")
 var name: String
 var paths: Array = []
 var total_enemies: int = 0
@@ -9,16 +7,18 @@ var enemy: LevelEnemy
 var music: String
 
 
-func _init(level_data):
+func set_level_data(level_data: Dictionary):
 	name = level_data["name"]
 
 	if "music" in level_data:
 		music = level_data["music"]
 
-	enemy = LevelEnemy.new(level_data["enemy"])
+	enemy = LevelEnemy.new()
+	enemy.set_enemy_data(level_data["enemy"])
 
 	for path_data in level_data["paths"]:
-		var path: LevelPath = LevelPath.new(path_data)
+		var path: LevelPath = LevelPath.new()
+		path.set_path_data(path_data)
 		paths.append(path)
 		total_enemies += path.num_enemies
 

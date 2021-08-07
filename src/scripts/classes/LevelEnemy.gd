@@ -1,4 +1,4 @@
-extends Object
+class_name LevelEnemy
 
 var sprite: String
 var health: float
@@ -7,7 +7,7 @@ var points: int
 var scale: float = 0.4
 
 
-func _init(enemy_data):
+func set_enemy_data(enemy_data):
 	sprite = enemy_data["sprite"]
 	health = enemy_data["health"]
 	speed = enemy_data["speed"]
