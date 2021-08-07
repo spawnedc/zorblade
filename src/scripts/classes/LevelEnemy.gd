@@ -15,3 +15,15 @@ func set_enemy_data(enemy_data):
 
 	if "scale" in enemy_data:
 		scale = enemy_data["scale"]
+
+
+func to_json() -> Dictionary:
+	var enemy_data: Dictionary = {
+		"sprite": sprite,
+		"health": health,
+		"speed": speed,
+		"points": points,
+		"scale": scale,
+	}
+
+	return enemy_data

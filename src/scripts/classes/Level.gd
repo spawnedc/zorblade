@@ -3,7 +3,7 @@ class_name Level
 var name: String
 var paths: Array = []
 var total_enemies: int = 0
-var enemy: LevelEnemy
+var enemy: LevelEnemy = LevelEnemy.new()
 var music: String
 
 
@@ -13,7 +13,6 @@ func set_level_data(level_data: Dictionary):
 	if "music" in level_data:
 		music = level_data["music"]
 
-	enemy = LevelEnemy.new()
 	enemy.set_enemy_data(level_data["enemy"])
 
 	for path_data in level_data["paths"]:
@@ -33,3 +32,20 @@ func get_max_enemies(path_index: int) -> int:
 
 func get_spawn_rate(path_index: int) -> float:
 	return paths[path_index].spawn_rate
+
+
+func to_json() -> Dictionary:
+	var paths_array = []
+
+	for path in paths:
+		paths_array.append(path.to_json())
+
+	var level_data: Dictionary = {
+		"name": name,
+		"total_enemies": total_enemies,
+		"music": music,
+		"enemy": enemy.to_json(),
+		"paths": paths
+	}
+
+	return level_data
