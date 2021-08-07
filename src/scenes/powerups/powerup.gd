@@ -13,7 +13,7 @@ func set_powerup_data(data: Dictionary):
 
 func _physics_process(delta: float) -> void:
 	if position.y > Globals.VIEWPORT_HEIGHT:
-		print('delete')
+		print('Powerup: Remove from scene')
 		queue_free()
 	else:
 		position += speed * direction * delta

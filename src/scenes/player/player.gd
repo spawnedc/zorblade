@@ -24,6 +24,7 @@ var min_y: float
 
 func _ready():
 	print('Player ready')
+	add_to_group(Globals.GROUP_PLAYER)
 	size = ship.get_rect().size * ship.scale.x
 	min_x = size.x / 2
 	max_x = get_parent().rect_size.x - min_x
@@ -60,6 +61,10 @@ func set_speed(new_speed: int) -> void:
 	speed = new_speed
 	print("Player: speed_change: ", speed)
 	emit_signal("speed_change", speed)
+
+
+func add_bullet_count(num_bullets: int) -> void:
+	set_bullet_count(bullet_count + num_bullets)
 
 
 func set_bullet_count(new_bullet_count: int) -> void:
