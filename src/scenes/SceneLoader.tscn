@@ -26,7 +26,8 @@ LEVEL_START = "res://states/SpwGames/SpwGames.tscn"
 [node name="Fader" type="ColorRect" parent="."]
 margin_right = 800.0
 margin_bottom = 800.0
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -5,9 +5,9 @@ signal scene_loaded(scene)
 export (String, FILE, "*.tscn") var LEVEL_START
 
 var current_scenes = []
-onready var fader = $Fader
-onready var animation_player = $Fader/AnimationPlayer
-onready var scenes = $Scenes
+onready var fader: ColorRect = $Fader
+onready var animation_player: AnimationPlayer = $Fader/AnimationPlayer
+onready var scenes: Node = $Scenes
 
 
 func _ready():
@@ -49,17 +49,30 @@ func goto_scene(scene_name: String):
 
 
 func _deferred_goto_scene(scene_name: String):
+	print(name, ": Changing scene to: ", scene_name)
+	fader.visible = true
 	animation_player.connect("animation_finished", self, "_on_fadeout_finished", [scene_name])
+	print(name, ": Fading out...")
 	animation_player.play("Fade")
 
 
 func _on_fadeout_finished(_animationName: String, scene_name: String):
+	print(name, ": Fade out complete")
 	animation_player.disconnect("animation_finished", self, "_on_fadeout_finished")
 
+	print(name, ": Removing children...")
 	while len(current_scenes):
 		var scene = current_scenes.pop_front()
 		scene.free()
 
 	_show_scene(scene_name)
 
+	animation_player.connect("animation_finished", self, "_on_fadein_finished")
+	print(name, ": Scene loaded. Fading in...")
 	animation_player.play_backwards("Fade")
+
+
+func _on_fadein_finished(_animation_name: String):
+	print(name, ": Fade in complete")
+	animation_player.disconnect("animation_finished", self, "_on_fadein_finished")
+	fader.visible = false

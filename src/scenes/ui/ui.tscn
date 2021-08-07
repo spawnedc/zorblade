@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/ui/ui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/Countdown.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/ui/Grid.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ui/Borders.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui/playerLife1_blue.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxLine" id=1]
@@ -31,53 +31,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Borders" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LeftTexture" type="TextureRect" parent="Borders"]
-modulate = Color( 1, 1, 1, 0.501961 )
-margin_right = 100.0
-margin_bottom = 800.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LeftBorder" type="ColorRect" parent="Borders"]
-margin_left = 100.0
-margin_right = 101.0
-margin_bottom = 800.0
-color = Color( 1, 1, 1, 0.501961 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RightTexture" type="TextureRect" parent="Borders"]
-modulate = Color( 1, 1, 1, 0.501961 )
-margin_left = 700.0
-margin_right = 800.0
-margin_bottom = 800.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RightBorder" type="ColorRect" parent="Borders"]
-margin_left = 700.0
-margin_right = 701.0
-margin_bottom = 800.0
-color = Color( 1, 1, 1, 0.501961 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Borders" parent="." instance=ExtResource( 3 )]
 
 [node name="Countdown" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
