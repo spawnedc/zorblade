@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Nothing",
-		"drop_rate": 1000
+		"drop_rate": 2000
 	},
 	{
 		"name": "SingleShot",
@@ -31,6 +31,11 @@
 	{
 		"name": "ExtraBullet",
 		"bullet_count": 2,
+		"drop_rate": 50
+	},
+	{
+		"name": "ExtraSpeed",
+		"speed": 10,
 		"drop_rate": 50
 	}
 ]

@@ -79,10 +79,16 @@ func _on_picked_powerup(powerup_data):
 	print("picked up powerup", powerup_data)
 
 	if "weapon" in powerup_data:
-		player.set_weapon(powerup_data["weapon"])
+		if powerup_data["weapon"] == player.current_weapon["name"]:
+			player.add_bullet_count(10)
+		else:
+			player.set_weapon(powerup_data["weapon"])
 
 	if "autofire" in powerup_data:
 		player.set_autofire(powerup_data["autofire"])
 
 	if "bullet_count" in powerup_data:
 		player.add_bullet_count(powerup_data["bullet_count"])
+
+	if "speed" in powerup_data:
+		player.add_speed(powerup_data["speed"])

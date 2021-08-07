@@ -10,7 +10,7 @@
 		{
 			"num_enemies": 12,
 			"spawn_rate": 0.2,
-			"spawn_delay": 0.5,
+			"spawn_delay": 0.4,
 			"curve_smoothness": 0,
 			"points": [
 				{

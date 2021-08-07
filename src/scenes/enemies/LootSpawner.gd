@@ -22,8 +22,6 @@ func _generate_loot_table():
 	for powerup in loot_table:
 		probabilities.append(powerup["drop_rate"] / random_range)
 
-	# probab
-
 
 func _get_drop():
 	var roll: float = randf()

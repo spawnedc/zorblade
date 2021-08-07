@@ -8,6 +8,8 @@ signal lives_change(lives)
 
 onready var ship: Sprite = $ship
 onready var weapon: Node2D = $weapon
+onready var powerup_label: Label = $PowerupName
+onready var powerup_animation: AnimationPlayer = $PowerupName/animation
 
 # Movement speed in pixels per second.
 var speed: int
@@ -19,7 +21,7 @@ var current_weapon
 var size: Vector2
 var min_x: float
 var max_x: float
-var min_y: float
+var initialised: bool = false
 
 
 func _ready():
@@ -37,6 +39,7 @@ func initialise() -> void:
 	set_speed(defaults["speed"])
 	set_bullet_count(defaults["bullet_count"])
 	set_lives(defaults["lives"])
+	initialised = true
 
 
 func set_lives(new_lives: int) -> void:
@@ -49,18 +52,24 @@ func set_weapon(weapon_name: String) -> void:
 	weapon.set_weapon(current_weapon)
 	print("Player: weapon_change: ", current_weapon)
 	emit_signal("weapon_change", current_weapon)
+	notify(current_weapon["name"])
 
 
 func set_autofire(state: bool) -> void:
 	has_autofire = state
 	print("Player: auto_fire_state_change: ", has_autofire)
 	emit_signal("auto_fire_state_change", has_autofire)
+	notify("Autofire")
 
+
+func add_speed(speed_amount: int) -> void:
+	set_speed(speed + speed_amount)
 
 func set_speed(new_speed: int) -> void:
 	speed = new_speed
 	print("Player: speed_change: ", speed)
 	emit_signal("speed_change", speed)
+	notify("Extra speed")
 
 
 func add_bullet_count(num_bullets: int) -> void:
@@ -72,6 +81,7 @@ func set_bullet_count(new_bullet_count: int) -> void:
 	weapon.set_max_bullet_count(bullet_count)
 	print("Player: bullet_count_change: ", bullet_count)
 	emit_signal("bullet_count_change", bullet_count)
+	notify("Extra bullet")
 
 
 func _handle_weapon_keys() -> void:
@@ -105,6 +115,14 @@ func _handle_weapon_fire() -> void:
 	else:
 		if Input.is_action_just_pressed("fire"):
 			weapon.fire()
+
+
+func notify(text: String):
+	if initialised:
+		print("Player: notify: ", text)
+		powerup_label.text = text
+		powerup_animation.seek(0)
+		powerup_animation.play("move_and_fade")
 
 
 func _physics_process(delta: float) -> void:
