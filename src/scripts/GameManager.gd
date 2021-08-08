@@ -10,8 +10,13 @@ signal game_over
 var current_level: Level
 
 
-func set_level(level: int) -> void:
-	var current_level_data = Utils.load_json("levels/level" + str(level))
+func set_level_index(index: int) -> void:
+	if index >= len(Globals.LEVEL_LIST):
+		emit_signal("game_over")
+		return
+
+	var level_name = Globals.LEVEL_LIST[index]
+	var current_level_data = Utils.load_json("levels/" + level_name)
 
 	if current_level_data == null:
 		print(name, ": Failed to load level data")

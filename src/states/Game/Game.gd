@@ -5,7 +5,7 @@ onready var ui = $UI
 onready var countdown = $UI/Countdown
 var remaining_enemies: int = 0
 var remaining_enemies_to_remove: int = 0
-var current_level_number: int = 1
+var level_index: int = 0
 var current_level: Level
 var score: int = 0
 
@@ -27,7 +27,7 @@ func _ready():
 
 	player.initialise()
 	ui.set_score(score)
-	GameManager.set_level(current_level_number)
+	GameManager.set_level_index(level_index)
 
 
 func _on_level_change(level: Level):
@@ -38,7 +38,7 @@ func _on_level_change(level: Level):
 	ui.set_level(level)
 	countdown.start(Globals.LEVEL_START_DELAY, level.name)
 
-	if current_level_number == 1:
+	if level_index == 0:
 		if current_level.music:
 			MusicManager.play(current_level.music)
 	else:
@@ -58,14 +58,14 @@ func _on_enemy_removed(_enemy):
 
 	if remaining_enemies_to_remove == 0:
 		# TODO: End game?
-		current_level_number += 1
-		GameManager.set_level(current_level_number)
+		level_index += 1
+		GameManager.set_level_index(level_index)
 
 
 func _on_level_start_timeout():
 	GameManager.start_level()
 
-	if current_level_number > 1:
+	if level_index > 0:
 		if current_level.music:
 			MusicManager.play(current_level.music)
 
