@@ -5,8 +5,8 @@ signal scene_loaded(scene)
 export (String, FILE, "*.tscn") var LEVEL_START
 
 var current_scenes = []
-onready var fader: ColorRect = $Fader
-onready var animation_player: AnimationPlayer = $Fader/AnimationPlayer
+onready var fader: ColorRect = $CanvasLayer/Fader
+onready var animation_player: AnimationPlayer = $CanvasLayer/Fader/AnimationPlayer
 onready var scenes: Node = $Scenes
 
 
