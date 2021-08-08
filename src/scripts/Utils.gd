@@ -46,3 +46,16 @@ func load_json(path: String):
 	file.close()
 
 	return JSON.parse(text).result
+
+
+func write_file(path: String, contents: String) -> bool:
+	var file: File = File.new()
+	var file_open_result = file.open(path, file.WRITE)
+
+	if file_open_result != OK:
+		return false
+
+	file.store_string(contents)
+	file.close()
+
+	return true
