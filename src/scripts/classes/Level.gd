@@ -41,7 +41,7 @@ func to_json() -> Dictionary:
 		paths_array.append(path.to_json())
 
 	var level_data: Dictionary = {
-		"name": name, "music": music, "enemy": enemy.to_json(), "paths": paths
+		"name": name, "music": music, "enemy": enemy.to_json(), "paths": paths_array
 	}
 
 	return level_data
