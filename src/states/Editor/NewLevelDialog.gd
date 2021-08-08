@@ -1,6 +1,7 @@
 extends Node2D
 
 signal done(level)
+signal cancel
 
 onready var dialog_new_level: PopupDialog = $LevelDialog
 onready var dialog_file: FileDialog = $FileDialog
@@ -28,9 +29,6 @@ const music_filters: PoolStringArray = PoolStringArray(["*.ogg ; OGG", "*.mp3 ; 
 const base_enemies_path: String = "res://assets/"
 const enemy_filters: PoolStringArray = PoolStringArray(["*.png ; PNG"])
 
-const base_levels_path: String = "res://data/levels/"
-const level_filters: PoolStringArray = PoolStringArray(["*.json ; JSON"])
-
 var level: Level
 
 
@@ -38,7 +36,7 @@ func _ready():
 	btn_select_music.connect("button_up", self, "_show_select_music_dialog")
 	btn_select_enemy.connect("button_up", self, "_show_select_enemy_dialog")
 
-	btn_cancel.connect("button_up", dialog_new_level, "hide")
+	btn_cancel.connect("button_up", self, "_handle_cancel")
 	btn_done.connect("button_up", self, "_handle_done")
 
 	input_level_name.connect("text_changed", self, "_handle_level_name_change")
@@ -54,6 +52,11 @@ func show():
 
 func _handle_done():
 	emit_signal("done", level)
+	dialog_new_level.hide()
+
+
+func _handle_cancel():
+	emit_signal("cancel")
 	dialog_new_level.hide()
 
 

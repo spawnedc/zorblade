@@ -5,9 +5,13 @@ var spawn_rate: float
 var spawn_delay: float
 var points: PoolVector2Array = []
 var final_positions: PoolVector2Array = []
-var curve_smoothness: int
+var curve_smoothness: int = 0
 var loop: bool = false
 var rotate: bool = true
+
+
+func add_point(point: Vector2):
+	points.append(point)
 
 
 func set_path_data(path_data: Dictionary):
