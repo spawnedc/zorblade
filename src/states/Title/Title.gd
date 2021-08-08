@@ -9,6 +9,7 @@ func _ready():
 	btn_new_game.connect("button_up", self, "start_new_game")
 	btn_editor.connect("button_up", self, "start_editor")
 	btn_quit.connect("button_up", self, "quit_game")
+	MusicManager.play('SkyFire/SkyFire (Title Screen).ogg')
 
 
 func start_new_game():
