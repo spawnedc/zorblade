@@ -8,7 +8,7 @@ func _get_music_name(music_name: String) -> String:
 	if music_name.begins_with("res://"):
 		return music_name
 
-	return 'res://assets/music/' + music_name + '.ogg'
+	return 'res://assets/music/' + music_name
 
 
 func stop_music(immediate: bool = false):

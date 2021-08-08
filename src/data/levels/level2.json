@@ -1,7 +1,7 @@
 {
 	"name": "Level 2",
 	"enemy": {
-		"sprite": "spaceshooter/Enemies/enemyRed5",
+		"sprite": "spaceshooter/Enemies/enemyRed5.png",
 		"health": 2,
 		"speed": 400,
 		"points": 50

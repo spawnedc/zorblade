@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	MusicManager.play('SkyFire/Defeated (Game Over Tune)')
+	MusicManager.play('SkyFire/Defeated (Game Over Tune).ogg')
 
 
 func _process(_delta):

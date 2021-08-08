@@ -1,8 +1,8 @@
 {
 	"name": "Level 3",
-	"music": "SkyFire/DeathMatch (Boss Theme)",
+	"music": "SkyFire/DeathMatch (Boss Theme).ogg",
 	"enemy": {
-		"sprite": "spaceshooter-extension/Ships/spaceShips_007",
+		"sprite": "spaceshooter-extension/Ships/spaceShips_007.png",
 		"scale": 0.7,
 		"health": 50,
 		"speed": 200,

@@ -1,8 +1,8 @@
 {
 	"name": "Level 1",
-	"music": "SkyFire/Without Fear",
+	"music": "SkyFire/Without Fear.ogg",
 	"enemy": {
-		"sprite": "spaceshooter/Enemies/enemyBlue2",
+		"sprite": "spaceshooter/Enemies/enemyBlue2.png",
 		"health": 1,
 		"speed": 400,
 		"points": 50
