@@ -37,7 +37,12 @@ func format_number(n):
 
 func load_json(path: String):
 	var file = File.new()
-	var file_open_result = file.open("res://data/" + path + ".json", file.READ)
+	var file_path: String = path
+
+	if path.begins_with("res://") == false:
+		file_path = "res://data/" + path + ".json"
+
+	var file_open_result: int = file.open(file_path, file.READ)
 
 	if file_open_result != OK:
 		return null

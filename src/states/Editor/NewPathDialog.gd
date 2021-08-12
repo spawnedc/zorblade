@@ -25,14 +25,6 @@ func _ready():
 	btn_cancel.connect("button_up", self, "_handle_cancel")
 	btn_done.connect("button_up", self, "_handle_done")
 
-	input_num_enemies.connect("text_changed", self, "_handle_num_enemies_change")
-	input_spawn_rate.connect("text_changed", self, "_handle_spawn_rate_change")
-	input_spawn_delay.connect("text_changed", self, "_handle_spawn_delay_change")
-	input_curve_smoothness.connect("text_changed", self, "_handle_curve_smoothness_change")
-
-	input_loop.connect("toggled", self, "_handle_loop_toggle")
-	input_rotate.connect("toggled", self, "_handle_rotate_toggle")
-
 
 func show():
 	path = LevelPath.new()
@@ -43,6 +35,13 @@ func show():
 
 
 func _handle_done():
+	path.num_enemies = int(input_num_enemies.text)
+	path.spawn_rate = float(input_spawn_rate.text)
+	path.spawn_delay = float(input_spawn_delay.text)
+	path.curve_smoothness = int(input_curve_smoothness.text)
+	path.loop = input_loop.pressed
+	path.rotate = input_rotate.pressed
+
 	emit_signal("done", path)
 	dialog_new_path.hide()
 
@@ -50,27 +49,3 @@ func _handle_done():
 func _handle_cancel():
 	emit_signal("cancel")
 	dialog_new_path.hide()
-
-
-func _handle_num_enemies_change(text: String):
-	path.num_enemies = int(text)
-
-
-func _handle_spawn_rate_change(text: String):
-	path.spawn_rate = float(text)
-
-
-func _handle_spawn_delay_change(text: String):
-	path.spawn_delay = float(text)
-
-
-func _handle_curve_smoothness_change(text: String):
-	path.curve_smoothness = int(text)
-
-
-func _handle_loop_toggle(is_toggled: bool):
-	path.loop = is_toggled
-
-
-func _handle_rotate_toggle(is_toggled: bool):
-	path.rotate = is_toggled

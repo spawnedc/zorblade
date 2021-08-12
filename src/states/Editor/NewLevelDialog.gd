@@ -39,11 +39,6 @@ func _ready():
 	btn_cancel.connect("button_up", self, "_handle_cancel")
 	btn_done.connect("button_up", self, "_handle_done")
 
-	input_level_name.connect("text_changed", self, "_handle_level_name_change")
-	input_enemy_speed.connect("text_changed", self, "_handle_enemy_speed_change")
-	input_enemy_health.connect("text_changed", self, "_handle_enemy_health_change")
-	input_enemy_points.connect("text_changed", self, "_handle_enemy_points_change")
-
 
 func show():
 	level = Level.new()
@@ -51,6 +46,10 @@ func show():
 
 
 func _handle_done():
+	level.name = input_level_name.text
+	level.enemy.speed = float(input_enemy_speed.text)
+	level.enemy.health = float(input_enemy_health.text)
+	level.enemy.points = int(input_enemy_points.text)
 	emit_signal("done", level)
 	dialog_new_level.hide()
 
@@ -88,19 +87,3 @@ func _handle_enemy_select(path: String):
 	var name = path.replace(base_enemies_path, "")
 	label_enemy.text = name
 	level.enemy.sprite = name
-
-
-func _handle_level_name_change(text: String):
-	level.name = text
-
-
-func _handle_enemy_speed_change(text: String):
-	level.enemy.speed = float(text)
-
-
-func _handle_enemy_health_change(text: String):
-	level.enemy.health = float(text)
-
-
-func _handle_enemy_points_change(text: String):
-	level.enemy.points = int(text)
