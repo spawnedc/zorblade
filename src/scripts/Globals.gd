@@ -13,4 +13,4 @@ const LEVEL_START_DELAY: int = 2
 
 var IS_DEBUG: bool = OS.is_debug_build()
 
-const LEVEL_LIST: PoolStringArray = PoolStringArray(['level1', 'level2', 'level3'])
+const LEVEL_LIST: PoolStringArray = PoolStringArray(['level4', 'level1', 'level2', 'level3'])
