@@ -8,13 +8,9 @@
 [ext_resource path="res://scenes/enemies/LootSpawner.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Control"]
-margin_top = -1.0
 margin_right = 800.0
-margin_bottom = 799.0
+margin_bottom = 800.0
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="UI" parent="." instance=ExtResource( 3 )]
 
@@ -23,9 +19,6 @@ margin_left = 100.0
 margin_right = 700.0
 margin_bottom = 800.0
 rect_clip_content = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Player" parent="Container" instance=ExtResource( 4 )]
 position = Vector2( 300, 750 )
