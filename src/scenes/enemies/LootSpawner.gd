@@ -42,8 +42,9 @@ func _on_enemy_death(enemy):
 	# 0 is nothing.
 	if drop_index > 0:
 		var powerup_data = loot_table[drop_index]
-		# var powerup_scene = load('res://scenes/powerups/' + powerup_data["name"] + '.tscn')
-		var powerup_scene = load('res://scenes/powerups/GenericPowerup.tscn')
+		var powerup_scene = load("res://scenes/powerups/" + powerup_data["name"] + ".tscn")
+		if not powerup_scene:
+			powerup_scene = load("res://scenes/powerups/GenericPowerup.tscn")
 
 		var powerup = spawner.spawn(powerup_scene)
 		powerup.global_position = enemy.global_position
