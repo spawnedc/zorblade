@@ -1,69 +1,56 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://cj4yrbn0k7ql8"]
 
-[ext_resource path="res://assets/ui/Grid.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://b1hiubxv44kf6" path="res://assets/ui/Grid.png" id="1"]
 
 [node name="Borders" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LeftBg" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 100.0
 offset_bottom = 800.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 0, 0, 1)
 
 [node name="LeftTexture" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.501961 )
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 0
 offset_right = 100.0
 offset_bottom = 800.0
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("1")
+expand_mode = 4
+stretch_mode = 1
 
 [node name="LeftBorder" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 100.0
 offset_right = 101.0
 offset_bottom = 800.0
-color = Color( 1, 1, 1, 0.501961 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(1, 1, 1, 0.501961)
 
 [node name="RightBg" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 700.0
 offset_right = 800.0
 offset_bottom = 800.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 0, 0, 1)
 
 [node name="RightTexture" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.501961 )
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 0
 offset_left = 700.0
 offset_right = 800.0
 offset_bottom = 800.0
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("1")
+expand_mode = 4
+stretch_mode = 1
 
 [node name="RightBorder" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 700.0
 offset_right = 701.0
 offset_bottom = 800.0
-color = Color( 1, 1, 1, 0.501961 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(1, 1, 1, 0.501961)

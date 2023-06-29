@@ -1,138 +1,95 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://bsj1nbjfc57sf"]
 
-[ext_resource path="res://fonts/text_me_one_30.tres" type="FontFile" id=1]
-[ext_resource path="res://assets/ui/button-normal.png" type="Texture2D" id=2]
-[ext_resource path="res://states/Title/Title.gd" type="Script" id=3]
-[ext_resource path="res://assets/ui/button-hover.png" type="Texture2D" id=4]
-[ext_resource path="res://assets/ui/button-pressed.png" type="Texture2D" id=5]
+[ext_resource type="FontFile" path="res://fonts/text_me_one_30.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://dwe5u24slowjl" path="res://assets/ui/button-normal.png" id="2"]
+[ext_resource type="Script" path="res://states/Title/Title.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://cscaywnjmkg4d" path="res://assets/ui/button-hover.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://co5a4mjrlh0i6" path="res://assets/ui/button-pressed.png" id="5"]
 
 [node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.18921
 offset_top = 0.594604
 offset_right = -1.18921
 offset_bottom = 0.594604
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("3")
 
 [node name="Wrapper" type="MarginContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 250.0
 offset_top = 20.0
 offset_right = -250.0
 offset_bottom = -20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MenuContainer" type="VBoxContainer" parent="Wrapper"]
-offset_right = 300.0
-offset_bottom = 760.0
+layout_mode = 2
 alignment = 1
 
 [node name="GameTitle" type="Label" parent="Wrapper/MenuContainer"]
-offset_top = 323.0
-offset_right = 300.0
-offset_bottom = 361.0
-theme_override_fonts/font = ExtResource( 1 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1")
 text = "ZORBLADE"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
 
 [node name="Menu" type="VBoxContainer" parent="Wrapper/MenuContainer"]
-offset_top = 365.0
-offset_right = 300.0
-offset_bottom = 436.0
+layout_mode = 2
 alignment = 1
 
 [node name="NewGame" type="MarginContainer" parent="Wrapper/MenuContainer/Menu"]
-offset_right = 300.0
-offset_bottom = 21.0
+layout_mode = 2
 
 [node name="Button" type="TextureButton" parent="Wrapper/MenuContainer/Menu/NewGame"]
-offset_left = 97.0
-offset_right = 202.0
-offset_bottom = 21.0
-mouse_default_cursor_shape = 2
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 4 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2")
+texture_pressed = ExtResource("5")
+texture_hover = ExtResource("4")
 
 [node name="Label" type="Label" parent="Wrapper/MenuContainer/Menu/NewGame"]
-offset_left = 114.0
-offset_right = 186.0
-offset_bottom = 21.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "New Game"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Editor" type="MarginContainer" parent="Wrapper/MenuContainer/Menu"]
-offset_top = 25.0
-offset_right = 300.0
-offset_bottom = 46.0
+layout_mode = 2
 
 [node name="Button" type="TextureButton" parent="Wrapper/MenuContainer/Menu/Editor"]
-offset_left = 97.0
-offset_right = 202.0
-offset_bottom = 21.0
-mouse_default_cursor_shape = 2
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 4 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2")
+texture_pressed = ExtResource("5")
+texture_hover = ExtResource("4")
 
 [node name="Label" type="Label" parent="Wrapper/MenuContainer/Menu/Editor"]
-offset_left = 131.0
-offset_right = 168.0
-offset_bottom = 21.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "Editor"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Quit" type="MarginContainer" parent="Wrapper/MenuContainer/Menu"]
-offset_top = 50.0
-offset_right = 300.0
-offset_bottom = 71.0
+layout_mode = 2
 
 [node name="Button" type="TextureButton" parent="Wrapper/MenuContainer/Menu/Quit"]
-offset_left = 97.0
-offset_right = 202.0
-offset_bottom = 21.0
-mouse_default_cursor_shape = 2
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 4 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2")
+texture_pressed = ExtResource("5")
+texture_hover = ExtResource("4")
 
 [node name="Label" type="Label" parent="Wrapper/MenuContainer/Menu/Quit"]
-offset_left = 137.0
-offset_right = 162.0
-offset_bottom = 21.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "Quit"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
