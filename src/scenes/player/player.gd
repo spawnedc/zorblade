@@ -129,7 +129,7 @@ func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input_vector = input_vector.normalized()
-
+	
 	position += input_vector * speed * delta
 
 	position.x = clamp(position.x, min_x, max_x)
