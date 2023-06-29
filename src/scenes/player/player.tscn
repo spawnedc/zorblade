@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/player/player.gd" type="Script" id=1]
-[ext_resource path="res://assets/spaceshooter/playerShip1_blue.png" type="Texture" id=2]
+[ext_resource path="res://assets/spaceshooter/playerShip1_blue.png" type="Texture2D" id=2]
 [ext_resource path="res://scenes/player/weapon.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -11,14 +11,14 @@ radius = 15.9891
 resource_name = "move_and_fade"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -106, -52 ), Vector2( -106, -100 ) ]
 }
@@ -29,8 +29,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 2 ),
-"transitions": PoolRealArray( 5.65685, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.7, 2 ),
+"transitions": PackedFloat32Array( 5.65685, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -48,16 +48,16 @@ shape = SubResource( 1 )
 position = Vector2( 0, -20 )
 script = ExtResource( 3 )
 
-[node name="ship" type="Sprite" parent="."]
+[node name="ship" type="Sprite2D" parent="."]
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 texture = ExtResource( 2 )
 
 [node name="PowerupName" type="Label" parent="."]
-margin_left = -106.0
-margin_top = -52.0
-margin_right = 106.0
-margin_bottom = -31.0
+offset_left = -106.0
+offset_top = -52.0
+offset_right = 106.0
+offset_bottom = -31.0
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,6 +1,6 @@
 extends Area2D
 
-onready var collision = $collision
+@onready var collision = $collision
 
 var speed: int = 150
 var direction: Vector2 = Vector2(0, 1)

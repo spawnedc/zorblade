@@ -1,8 +1,8 @@
 extends Control
 
-onready var player = $Container/Player
-onready var ui = $UI
-onready var countdown = $UI/Countdown
+@onready var player = $Container/Player
+@onready var ui = $UI
+@onready var countdown = $UI/Countdown
 var remaining_enemies: int = 0
 var remaining_enemies_to_remove: int = 0
 var level_index: int = 0
@@ -11,19 +11,19 @@ var score: int = 0
 
 
 func _ready():
-	GameManager.connect("level_change", self, "_on_level_change")
-	GameManager.connect("enemy_death", self, "_on_enemy_death")
-	GameManager.connect("enemy_removed", self, "_on_enemy_removed")
-	GameManager.connect("game_over", self, "_on_game_over")
-	GameManager.connect("picked_powerup", self, "_on_picked_powerup")
+	GameManager.connect("level_change", Callable(self, "_on_level_change"))
+	GameManager.connect("enemy_death", Callable(self, "_on_enemy_death"))
+	GameManager.connect("enemy_removed", Callable(self, "_on_enemy_removed"))
+	GameManager.connect("game_over", Callable(self, "_on_game_over"))
+	GameManager.connect("picked_powerup", Callable(self, "_on_picked_powerup"))
 
-	player.connect("auto_fire_state_change", ui, "set_auto_fire_state")
-	player.connect("weapon_change", ui, "set_weapon")
-	player.connect("speed_change", ui, "set_speed")
-	player.connect("bullet_count_change", ui, "set_bullet_count")
-	player.connect("lives_change", ui, "set_lives")
+	player.connect("auto_fire_state_change", Callable(ui, "set_auto_fire_state"))
+	player.connect("weapon_change", Callable(ui, "set_weapon"))
+	player.connect("speed_change", Callable(ui, "set_velocity"))
+	player.connect("bullet_count_change", Callable(ui, "set_bullet_count"))
+	player.connect("lives_change", Callable(ui, "set_lives"))
 
-	countdown.connect("countdown_end", self, "_on_level_start_timeout")
+	countdown.connect("countdown_end", Callable(self, "_on_level_start_timeout"))
 
 	player.initialise()
 	ui.set_score(score)

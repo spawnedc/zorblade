@@ -1,8 +1,8 @@
 extends Node2D
 
-onready var parallax_bg = $ParallaxBackground
-onready var parallax_layer = $ParallaxBackground/ParallaxLayer
-onready var background = $ParallaxBackground/ParallaxLayer/Sprite
+@onready var parallax_bg = $ParallaxBackground
+@onready var parallax_layer = $ParallaxBackground/ParallaxLayer
+@onready var background = $ParallaxBackground/ParallaxLayer/Sprite2D
 
 
 func _ready():

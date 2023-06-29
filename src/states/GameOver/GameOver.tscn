@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://fonts/text_me_one_30.tres" type="DynamicFont" id=1]
-[ext_resource path="res://fonts/text_me_one_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/text_me_one_30.tres" type="FontFile" id=1]
+[ext_resource path="res://fonts/text_me_one_16.tres" type="FontFile" id=2]
 [ext_resource path="res://states/GameOver/GameOver.gd" type="Script" id=3]
 
 [node name="GameOver" type="Control"]
@@ -15,27 +15,27 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 358.0
-margin_right = 780.0
-margin_bottom = 396.0
-custom_fonts/font = ExtResource( 1 )
+offset_top = 358.0
+offset_right = 780.0
+offset_bottom = 396.0
+theme_override_fonts/font = ExtResource( 1 )
 text = "Game over"
 align = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
-margin_top = 400.0
-margin_right = 780.0
-margin_bottom = 421.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = 400.0
+offset_right = 780.0
+offset_bottom = 421.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "Press space to start again"
 align = 1

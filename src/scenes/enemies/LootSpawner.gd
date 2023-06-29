@@ -5,14 +5,14 @@ var probabilities = []
 var random_range: int = 0
 const drop_rate = 5  # percent
 
-onready var spawner = $spawner
+@onready var spawner = $spawner
 
 
 func _ready():
 	randomize()
 	loot_table = Utils.load_json("loot_table")
 	_generate_loot_table()
-	GameManager.connect("enemy_death", self, "_on_enemy_death")
+	GameManager.connect("enemy_death", Callable(self, "_on_enemy_death"))
 
 
 func _generate_loot_table():

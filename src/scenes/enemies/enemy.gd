@@ -13,12 +13,12 @@ var can_move_to_final_position: bool = false
 var is_dead: bool = false
 var points: int
 
-onready var animationPlayer = $AnimationPlayer
+@onready var animationPlayer = $AnimationPlayer
 
 
 func _ready():
-	$deathAnimation/AnimatedSprite.connect(
-		'animation_finished', self, '_on_death_animation_finished'
+	$deathAnimation/AnimatedSprite2D.connect(
+		'animation_finished', Callable(self, '_on_death_animation_finished')
 	)
 
 
@@ -45,7 +45,7 @@ func set_texture(texture: String, scale: float):
 	$ship.scale = Vector2(scale, scale)
 
 
-func set_speed(new_speed: float) -> void:
+func set_velocity(new_speed: float) -> void:
 	speed = new_speed
 
 
@@ -79,7 +79,7 @@ func hurt(damage: float):
 func play_death_animation() -> void:
 	$collision.set_deferred("disabled", true)
 	$ship.visible = false
-	set_speed(0)
+	set_velocity(0)
 	$deathAnimation.play()
 	emit_signal("dead")
 

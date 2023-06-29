@@ -1,7 +1,7 @@
 extends Node
 
-onready var player: AudioStreamPlayer = $Player
-onready var fader: AnimationPlayer = $Player/Fader
+@onready var player: AudioStreamPlayer = $Player
+@onready var fader: AnimationPlayer = $Player/Fader
 
 
 func _get_music_name(music_name: String) -> String:
@@ -14,7 +14,7 @@ func _get_music_name(music_name: String) -> String:
 func stop_music(immediate: bool = false):
 	if immediate == false:
 		print(name, ": Fading out... ")
-		fader.connect('animation_finished', self, '_stop_playback')
+		fader.connect('animation_finished', Callable(self, '_stop_playback'))
 		fader.play('fade')
 	else:
 		print(name, ": Stopping immedtiately ")
@@ -23,7 +23,7 @@ func stop_music(immediate: bool = false):
 
 func _stop_playback(_anim_name):
 	print(name, ": Fade out/stop complete")
-	fader.disconnect('animation_finished', self, '_stop_playback')
+	fader.disconnect('animation_finished', Callable(self, '_stop_playback'))
 	player.stop()
 
 

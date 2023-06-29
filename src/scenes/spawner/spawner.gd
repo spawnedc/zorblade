@@ -1,6 +1,6 @@
-extends Position2D
+extends Marker2D
 
-export var spawn_scene: PackedScene
+@export var spawn_scene: PackedScene
 
 
 func spawn(_spawn_scene, parent_scene = self) -> Node2D:
@@ -10,12 +10,12 @@ func spawn(_spawn_scene, parent_scene = self) -> Node2D:
 		scene_to_spawn = spawn_scene
 
 	# Creates a new instance of the _spawn_scene
-	var spawn := scene_to_spawn.instance() as Node2D
+	var spawn := scene_to_spawn.instantiate() as Node2D
 
 	parent_scene.add_child(spawn)
 
 	# Prevents the Spawner2D transform from affecting the new instance
-	spawn.set_as_toplevel(true)
+	spawn.set_as_top_level(true)
 
 	# Move the new instance to the Spawner2D position
 	spawn.global_position = parent_scene.global_position

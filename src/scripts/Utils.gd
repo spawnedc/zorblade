@@ -22,7 +22,7 @@ func array_to_curve(input: Array, dist: float = 0) -> Curve2D:
 
 
 func format_number(n):
-	n = String(n)
+	n = str(n)
 	var size = n.length()
 	var s = ""
 
@@ -36,28 +36,28 @@ func format_number(n):
 
 
 func load_json(path: String):
-	var file = File.new()
 	var file_path: String = path
 
 	if path.begins_with("res://") == false:
 		file_path = "res://data/" + path + ".json"
 
-	var file_open_result: int = file.open(file_path, file.READ)
+	var file = FileAccess.open(file_path, FileAccess.READ)
 
-	if file_open_result != OK:
+	if file == null:
 		return null
 
 	var text = file.get_as_text()
 	file.close()
 
-	return JSON.parse(text).result
+	var json = JSON.new()
+	json.parse(text)
+	return json.get_data()
 
 
 func write_file(path: String, contents: String) -> bool:
-	var file: File = File.new()
-	var file_open_result = file.open(path, file.WRITE)
+	var file = FileAccess.open(path, FileAccess.WRITE)
 
-	if file_open_result != OK:
+	if file == null:
 		return false
 
 	file.store_string(contents)

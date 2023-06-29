@@ -6,141 +6,141 @@
 [node name="NewPathDialog" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="PathDialog" type="PopupDialog" parent="."]
+[node name="PathDialog" type="Popup" parent="."]
 visible = true
-margin_left = 200.0
-margin_top = 200.0
-margin_right = 600.0
-margin_bottom = 528.0
-custom_styles/panel = ExtResource( 2 )
-popup_exclusive = true
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 600.0
+offset_bottom = 528.0
+theme_override_styles/panel = ExtResource( 2 )
+exclusive = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PathDialog"]
-margin_left = 30.0
-margin_top = 30.0
-margin_right = 370.0
-margin_bottom = 303.0
-custom_constants/separation = 20
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 370.0
+offset_bottom = 303.0
+theme_override_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="PathDialog/VBoxContainer"]
-margin_right = 340.0
-margin_bottom = 202.0
-custom_constants/hseparation = 10
+offset_right = 340.0
+offset_bottom = 202.0
+theme_override_constants/h_separation = 10
 columns = 2
 
 [node name="NumEnemiesLabel" type="Label" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_top = 5.0
-margin_right = 127.0
-margin_bottom = 26.0
+offset_top = 5.0
+offset_right = 127.0
+offset_bottom = 26.0
 text = "Num enemies:"
 
 [node name="NumEnemiesInput" type="LineEdit" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_left = 137.0
-margin_right = 340.0
-margin_bottom = 31.0
+offset_left = 137.0
+offset_right = 340.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 caret_blink = true
 
 [node name="SpawnRateLabel" type="Label" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_top = 40.0
-margin_right = 127.0
-margin_bottom = 61.0
+offset_top = 40.0
+offset_right = 127.0
+offset_bottom = 61.0
 text = "Spawn rate:"
 
 [node name="SpawnRateInput" type="LineEdit" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_left = 137.0
-margin_top = 35.0
-margin_right = 340.0
-margin_bottom = 66.0
+offset_left = 137.0
+offset_top = 35.0
+offset_right = 340.0
+offset_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 caret_blink = true
 
 [node name="SpawnDelayLabel" type="Label" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_top = 75.0
-margin_right = 127.0
-margin_bottom = 96.0
+offset_top = 75.0
+offset_right = 127.0
+offset_bottom = 96.0
 text = "Spawn delay:"
 
 [node name="SpawnDelayInput" type="LineEdit" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_left = 137.0
-margin_top = 70.0
-margin_right = 340.0
-margin_bottom = 101.0
+offset_left = 137.0
+offset_top = 70.0
+offset_right = 340.0
+offset_bottom = 101.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 caret_blink = true
 
 [node name="CurveSmoothnessLabel" type="Label" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_top = 110.0
-margin_right = 127.0
-margin_bottom = 131.0
+offset_top = 110.0
+offset_right = 127.0
+offset_bottom = 131.0
 text = "Curve smoothness:"
 
 [node name="CurveSmoothnessInput" type="LineEdit" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_left = 137.0
-margin_top = 105.0
-margin_right = 340.0
-margin_bottom = 136.0
+offset_left = 137.0
+offset_top = 105.0
+offset_right = 340.0
+offset_bottom = 136.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 caret_blink = true
 
 [node name="LoopLabel" type="Label" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_top = 144.0
-margin_right = 127.0
-margin_bottom = 165.0
-hint_tooltip = "Loop enemies along the path"
+offset_top = 144.0
+offset_right = 127.0
+offset_bottom = 165.0
+tooltip_text = "Loop enemies along the path"
 mouse_filter = 1
 text = "Loop:"
 
 [node name="LoopInput" type="CheckBox" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_left = 137.0
-margin_top = 140.0
-margin_right = 340.0
-margin_bottom = 169.0
+offset_left = 137.0
+offset_top = 140.0
+offset_right = 340.0
+offset_bottom = 169.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="RotateLabel" type="Label" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_top = 177.0
-margin_right = 127.0
-margin_bottom = 198.0
-hint_tooltip = "Rotate enemies based on the curve angle"
+offset_top = 177.0
+offset_right = 127.0
+offset_bottom = 198.0
+tooltip_text = "Rotate enemies based on the curve angle"
 mouse_filter = 1
 text = "Rotate:"
 
 [node name="RotateInput" type="CheckBox" parent="PathDialog/VBoxContainer/GridContainer"]
-margin_left = 137.0
-margin_top = 173.0
-margin_right = 340.0
-margin_bottom = 202.0
+offset_left = 137.0
+offset_top = 173.0
+offset_right = 340.0
+offset_bottom = 202.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="ButtonsContainer" type="GridContainer" parent="PathDialog/VBoxContainer"]
-margin_top = 222.0
-margin_right = 340.0
-margin_bottom = 249.0
-custom_constants/hseparation = 20
+offset_top = 222.0
+offset_right = 340.0
+offset_bottom = 249.0
+theme_override_constants/h_separation = 20
 columns = 2
 
 [node name="Cancel" type="Button" parent="PathDialog/VBoxContainer/ButtonsContainer"]
-margin_right = 160.0
-margin_bottom = 27.0
+offset_right = 160.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
 text = "Cancel"
 
 [node name="Done" type="Button" parent="PathDialog/VBoxContainer/ButtonsContainer"]
-margin_left = 180.0
-margin_right = 340.0
-margin_bottom = 27.0
+offset_left = 180.0
+offset_right = 340.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
 text = "Done"

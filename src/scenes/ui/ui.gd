@@ -1,17 +1,17 @@
 extends Control
 
-onready var debug_ui = $DebugUI
+@onready var debug_ui = $DebugUI
 
-onready var auto_fire_value = $DebugUI/VBoxContainer/Autofire/Value
-onready var weapon_value = $DebugUI/VBoxContainer/CurrentWeapon/Value
-onready var level_name = $DebugUI/VBoxContainer/CurrentLevel/Value
-onready var remaining_enemies = $DebugUI/VBoxContainer/RemainingEnemies/Value
+@onready var auto_fire_value = $DebugUI/VBoxContainer/Autofire/Value
+@onready var weapon_value = $DebugUI/VBoxContainer/CurrentWeapon/Value
+@onready var level_name = $DebugUI/VBoxContainer/CurrentLevel/Value
+@onready var remaining_enemies = $DebugUI/VBoxContainer/RemainingEnemies/Value
 
-onready var speed_bar: ProgressBar = $ActualUI/UiContainer/Speed/Bar
-onready var bullets_bar: ProgressBar = $ActualUI/UiContainer/Bullet/Bar
-onready var level_info: Label = $ActualUI/UiContainer/LevelInfo
-onready var player_lives: TextureProgress = $ActualUI/UiContainer/Lives/Lives
-onready var score_label: Label = $ScoreContainer/Value
+@onready var speed_bar: ProgressBar = $ActualUI/UiContainer/Speed/Bar
+@onready var bullets_bar: ProgressBar = $ActualUI/UiContainer/Bullet/Bar
+@onready var level_info: Label = $ActualUI/UiContainer/LevelInfo
+@onready var player_lives: TextureProgressBar = $ActualUI/UiContainer/Lives/Lives
+@onready var score_label: Label = $ScoreContainer/Value
 
 
 func _ready():
@@ -41,10 +41,10 @@ func set_level_name(name: String):
 
 
 func set_remaining_enemies(count: int):
-	remaining_enemies.text = String(count)
+	remaining_enemies.text = str(count)
 
 
-func set_speed(speed: int):
+func set_velocity(speed: int):
 	speed_bar.value = speed
 
 

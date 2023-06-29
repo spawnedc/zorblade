@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/ui/Grid.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/Grid.png" type="Texture2D" id=1]
 
 [node name="Borders" type="Control"]
 anchor_right = 1.0
@@ -11,8 +11,8 @@ __meta__ = {
 }
 
 [node name="LeftBg" type="ColorRect" parent="."]
-margin_right = 100.0
-margin_bottom = 800.0
+offset_right = 100.0
+offset_bottom = 800.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -20,8 +20,8 @@ __meta__ = {
 
 [node name="LeftTexture" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.501961 )
-margin_right = 100.0
-margin_bottom = 800.0
+offset_right = 100.0
+offset_bottom = 800.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
@@ -30,18 +30,18 @@ __meta__ = {
 }
 
 [node name="LeftBorder" type="ColorRect" parent="."]
-margin_left = 100.0
-margin_right = 101.0
-margin_bottom = 800.0
+offset_left = 100.0
+offset_right = 101.0
+offset_bottom = 800.0
 color = Color( 1, 1, 1, 0.501961 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RightBg" type="ColorRect" parent="."]
-margin_left = 700.0
-margin_right = 800.0
-margin_bottom = 800.0
+offset_left = 700.0
+offset_right = 800.0
+offset_bottom = 800.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -49,9 +49,9 @@ __meta__ = {
 
 [node name="RightTexture" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.501961 )
-margin_left = 700.0
-margin_right = 800.0
-margin_bottom = 800.0
+offset_left = 700.0
+offset_right = 800.0
+offset_bottom = 800.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
@@ -60,9 +60,9 @@ __meta__ = {
 }
 
 [node name="RightBorder" type="ColorRect" parent="."]
-margin_left = 700.0
-margin_right = 701.0
-margin_bottom = 800.0
+offset_left = 700.0
+offset_right = 701.0
+offset_bottom = 800.0
 color = Color( 1, 1, 1, 0.501961 )
 __meta__ = {
 "_edit_use_anchors_": false

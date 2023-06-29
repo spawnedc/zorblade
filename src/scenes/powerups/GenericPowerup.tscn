@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/spaceshooter/Power-ups/powerupRed_bolt.png" type="Texture" id=1]
+[ext_resource path="res://assets/spaceshooter/Power-ups/powerupRed_bolt.png" type="Texture2D" id=1]
 [ext_resource path="res://scenes/powerups/powerup.gd" type="Script" id=2]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.00314465, 1 )
-colors = PoolColorArray( 0.74902, 0.6, 0, 1, 1, 1, 1, 0 )
+offsets = PackedFloat32Array( 0.00314465, 1 )
+colors = PackedColorArray( 0.74902, 0.6, 0, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=2]
+[sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticleProcessMaterial" id=3]
 emission_shape = 1
 emission_sphere_radius = 1.0
 flag_disable_z = true
@@ -25,17 +25,17 @@ scale = 1.5
 color_ramp = SubResource( 2 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 16.2997, 16.5009 )
+size = Vector2( 16.2997, 16.5009 )
 
 [node name="GenericPowerup" type="Area2D"]
 script = ExtResource( 2 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 50
 lifetime = 0.3
 process_material = SubResource( 3 )
 
-[node name="powerupYellow" type="Sprite" parent="."]
+[node name="powerupYellow" type="Sprite2D" parent="."]
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 

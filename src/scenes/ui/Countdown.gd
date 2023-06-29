@@ -2,16 +2,16 @@ extends Control
 
 signal countdown_end
 
-onready var timer = $Timer
-onready var label = $Label
-export var countdown_from: int
+@onready var timer = $Timer
+@onready var label = $Label
+@export var countdown_from: int
 var countdown: int
 var label_prefix: String
-export var show_countdown: bool = false
+@export var show_countdown: bool = false
 
 
 func _ready():
-	timer.connect("timeout", self, "_on_timer_timeout")
+	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	visible = false
 
 
@@ -24,7 +24,7 @@ func _set_label():
 		else:
 			label.text = ""
 
-		label.text += String(countdown)
+		label.text += str(countdown)
 
 
 func start(number: int, prefix: String = ""):

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Epic End.ogg-ac7c3fcacc99d02385f20ad67e3e146b.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1d6xgm1733rm"
+path="res://.godot/imported/Epic End.ogg-ac7c3fcacc99d02385f20ad67e3e146b.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/SkyFire/Epic End.ogg"
-dest_files=[ "res://.import/Epic End.ogg-ac7c3fcacc99d02385f20ad67e3e146b.oggstr" ]
+dest_files=["res://.godot/imported/Epic End.ogg-ac7c3fcacc99d02385f20ad67e3e146b.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

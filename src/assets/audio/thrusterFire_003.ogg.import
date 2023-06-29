@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/thrusterFire_003.ogg-da499213aedfafd7e298949b54158c42.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://da51otg8mn4fl"
+path="res://.godot/imported/thrusterFire_003.ogg-da499213aedfafd7e298949b54158c42.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/audio/thrusterFire_003.ogg"
-dest_files=[ "res://.import/thrusterFire_003.ogg-da499213aedfafd7e298949b54158c42.oggstr" ]
+dest_files=["res://.godot/imported/thrusterFire_003.ogg-da499213aedfafd7e298949b54158c42.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

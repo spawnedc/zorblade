@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/doorClose_000.ogg-ac3807cb016446c062426b18300b1dbc.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ct6swftq706dy"
+path="res://.godot/imported/doorClose_000.ogg-ac3807cb016446c062426b18300b1dbc.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/audio/doorClose_000.ogg"
-dest_files=[ "res://.import/doorClose_000.ogg-ac3807cb016446c062426b18300b1dbc.oggstr" ]
+dest_files=["res://.godot/imported/doorClose_000.ogg-ac3807cb016446c062426b18300b1dbc.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

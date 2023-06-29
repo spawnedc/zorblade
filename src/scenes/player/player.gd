@@ -6,10 +6,10 @@ signal speed_change(speed)
 signal bullet_count_change(bullet_count)
 signal lives_change(lives)
 
-onready var ship: Sprite = $ship
-onready var weapon: Node2D = $weapon
-onready var powerup_label: Label = $PowerupName
-onready var powerup_animation: AnimationPlayer = $PowerupName/animation
+@onready var ship: Sprite2D = $ship
+@onready var weapon: Node2D = $weapon
+@onready var powerup_label: Label = $PowerupName
+@onready var powerup_animation: AnimationPlayer = $PowerupName/animation
 
 # Movement speed in pixels per second.
 var speed: int
@@ -29,14 +29,14 @@ func _ready():
 	add_to_group(Globals.GROUP_PLAYER)
 	size = ship.get_rect().size * ship.scale.x
 	min_x = size.x / 2
-	max_x = get_parent().rect_size.x - min_x
+	max_x = get_parent().size.x - min_x
 
 
 func initialise() -> void:
 	var defaults = Defaults.player
 	set_weapon(defaults["initial_weapon"])
 	set_autofire(defaults["has_autofire"])
-	set_speed(defaults["speed"])
+	set_velocity(defaults["speed"])
 	set_bullet_count(defaults["bullet_count"])
 	set_lives(defaults["lives"])
 	initialised = true
@@ -63,9 +63,9 @@ func set_autofire(state: bool) -> void:
 
 
 func add_speed(speed_amount: int) -> void:
-	set_speed(speed + speed_amount)
+	set_velocity(speed + speed_amount)
 
-func set_speed(new_speed: int) -> void:
+func set_velocity(new_speed: int) -> void:
 	speed = new_speed
 	print("Player: speed_change: ", speed)
 	emit_signal("speed_change", speed)

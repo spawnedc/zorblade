@@ -3,8 +3,8 @@ class_name LevelPath
 var num_enemies: int
 var spawn_rate: float
 var spawn_delay: float
-var points: PoolVector2Array = []
-var final_positions: PoolVector2Array = []
+var points: PackedVector2Array = []
+var final_positions: PackedVector2Array = []
 var curve_smoothness: int = 0
 var loop: bool = false
 var rotate: bool = true

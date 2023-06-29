@@ -9,10 +9,10 @@ var can_fire = true
 var current_weapon
 
 
-func _get_weapon_instance(scene_name: String) -> Resource:
+func _get_weapon_instance(scene_name: String) -> Node:
 	var weapon_scene = load('res://scenes/weapons/' + scene_name + '.tscn')
 
-	return weapon_scene.instance()
+	return weapon_scene.instantiate()
 
 
 func fire():

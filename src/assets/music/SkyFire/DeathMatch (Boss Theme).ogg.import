@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/DeathMatch (Boss Theme).ogg-6e23a1b444747df123b9665565b4d1d7.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgm7rkj4goyjh"
+path="res://.godot/imported/DeathMatch (Boss Theme).ogg-6e23a1b444747df123b9665565b4d1d7.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/SkyFire/DeathMatch (Boss Theme).ogg"
-dest_files=[ "res://.import/DeathMatch (Boss Theme).ogg-6e23a1b444747df123b9665565b4d1d7.oggstr" ]
+dest_files=["res://.godot/imported/DeathMatch (Boss Theme).ogg-6e23a1b444747df123b9665565b4d1d7.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

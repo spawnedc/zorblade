@@ -32,7 +32,7 @@ func enemy_dead(enemy):
 	emit_signal("enemy_death", enemy)
 
 
-func enemy_removed(enemy):
+func remove_enemy(enemy):
 	emit_signal("enemy_removed", enemy)
 
 
@@ -40,5 +40,5 @@ func start_level():
 	emit_signal("level_start")
 
 
-func picked_powerup(powerup_data):
+func pick_powerup(powerup_data):
 	emit_signal("picked_powerup", powerup_data)

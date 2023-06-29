@@ -1,14 +1,14 @@
 extends Control
 
-onready var btn_new_game: TextureButton = $Wrapper/MenuContainer/Menu/NewGame/Button
-onready var btn_editor: TextureButton = $Wrapper/MenuContainer/Menu/Editor/Button
-onready var btn_quit: TextureButton = $Wrapper/MenuContainer/Menu/Quit/Button
+@onready var btn_new_game: TextureButton = $Wrapper/MenuContainer/Menu/NewGame/Button
+@onready var btn_editor: TextureButton = $Wrapper/MenuContainer/Menu/Editor/Button
+@onready var btn_quit: TextureButton = $Wrapper/MenuContainer/Menu/Quit/Button
 
 
 func _ready():
-	btn_new_game.connect("button_up", self, "start_new_game")
-	btn_editor.connect("button_up", self, "start_editor")
-	btn_quit.connect("button_up", self, "quit_game")
+	btn_new_game.connect("button_up", Callable(self, "start_new_game"))
+	btn_editor.connect("button_up", Callable(self, "start_editor"))
+	btn_quit.connect("button_up", Callable(self, "quit_game"))
 	MusicManager.play('SkyFire/SkyFire (Title Screen).ogg')
 
 
