@@ -51,7 +51,5 @@ func _on_enemy_death(enemy):
 		powerup.set_powerup_data(powerup_data)
 		powerup.connect(
 			"area_entered",
-			CollisionManager,
-			"handle_player_picked_up_powerup",
-			[powerup, powerup_data]
+			Callable(CollisionManager, "handle_player_picked_up_powerup").bind(powerup, powerup_data)
 		)
