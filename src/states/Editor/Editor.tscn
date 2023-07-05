@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://brdv88uqop4g6"]
+[gd_scene load_steps=9 format=3 uid="uid://brdv88uqop4g6"]
 
 [ext_resource type="PackedScene" uid="uid://cj4yrbn0k7ql8" path="res://scenes/ui/Borders.tscn" id="1"]
 [ext_resource type="Script" path="res://states/Editor/Editor.gd" id="2"]
 [ext_resource type="Script" path="res://states/Editor/camera.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://cc46ck687enhd" path="res://assets/backgrounds/starfield.png" id="4"]
 [ext_resource type="PackedScene" path="res://states/Editor/NewLevelDialog.tscn" id="5"]
-[ext_resource type="Texture2D" uid="uid://dwe5u24slowjl" path="res://assets/ui/button-normal.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://co5a4mjrlh0i6" path="res://assets/ui/button-pressed.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://cscaywnjmkg4d" path="res://assets/ui/button-hover.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://bgwfr1gte1o45" path="res://states/Editor/MainMenu.tscn" id="8_8m52u"]
 [ext_resource type="PackedScene" path="res://states/Editor/NewPathDialog.tscn" id="10"]
 [ext_resource type="Script" path="res://states/Editor/DrawArea.gd" id="11"]
 
@@ -15,6 +13,7 @@
 script = ExtResource("2")
 
 [node name="camera" type="Camera2D" parent="."]
+visible = false
 offset = Vector2(400, 400)
 position_smoothing_speed = 20.0
 script = ExtResource("3")
@@ -61,6 +60,8 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 90.0
 offset_bottom = 790.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Toolbar" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
@@ -93,73 +94,9 @@ visible = false
 visible = false
 
 [node name="FileDialog" type="FileDialog" parent="UI"]
+size = Vector2i(353, 154)
 dialog_hide_on_ok = true
 filters = PackedStringArray("*.ogg ; OGG", "*.mp3 ; MP3")
 
-[node name="MainMenu" type="Popup" parent="UI"]
-initial_position = 2
-size = Vector2i(105, 100)
-visible = true
-exclusive = true
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/MainMenu"]
-offset_right = 150.0
-offset_bottom = 100.0
-
-[node name="Menu" type="VBoxContainer" parent="UI/MainMenu/CenterContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="NewLevel" type="MarginContainer" parent="UI/MainMenu/CenterContainer/Menu"]
-layout_mode = 2
-
-[node name="Button" type="TextureButton" parent="UI/MainMenu/CenterContainer/Menu/NewLevel"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("8")
-texture_hover = ExtResource("9")
-
-[node name="Label" type="Label" parent="UI/MainMenu/CenterContainer/Menu/NewLevel"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 1
-text = "New level"
-
-[node name="OpenLevel" type="MarginContainer" parent="UI/MainMenu/CenterContainer/Menu"]
-layout_mode = 2
-
-[node name="Button" type="TextureButton" parent="UI/MainMenu/CenterContainer/Menu/OpenLevel"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("8")
-texture_hover = ExtResource("9")
-
-[node name="Label" type="Label" parent="UI/MainMenu/CenterContainer/Menu/OpenLevel"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 1
-text = "Open level"
-
-[node name="Exit" type="MarginContainer" parent="UI/MainMenu/CenterContainer/Menu"]
-layout_mode = 2
-
-[node name="Button" type="TextureButton" parent="UI/MainMenu/CenterContainer/Menu/Exit"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("8")
-texture_hover = ExtResource("9")
-
-[node name="Label" type="Label" parent="UI/MainMenu/CenterContainer/Menu/Exit"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 1
-text = "Exit editor	"
+[node name="MainMenu" parent="UI" instance=ExtResource("8_8m52u")]
+visible = false

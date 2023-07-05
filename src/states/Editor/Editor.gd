@@ -12,16 +12,8 @@ extends Node2D
 
 @onready var dialog_new_level: Node2D = $UI/NewLevelDialog
 @onready var dialog_new_path: Node2D = $UI/NewPathDialog
-@onready var dialog_main_menu: Popup = $UI/MainMenu
+@onready var dialog_main_menu: Control = $UI/MainMenu
 @onready var dialog_file: FileDialog = $UI/FileDialog
-
-@onready var btn_new_level: TextureButton = dialog_main_menu.get_node(
-	"CenterContainer/Menu/NewLevel/Button"
-)
-@onready var btn_open_level: TextureButton = dialog_main_menu.get_node(
-	"CenterContainer/Menu/OpenLevel/Button"
-)
-@onready var btn_exit: TextureButton = dialog_main_menu.get_node("CenterContainer/Menu/Exit/Button")
 
 const camera_offset: Vector2 = Vector2(100, 0)
 const base_levels_path: String = "res://data/levels/"
@@ -35,12 +27,13 @@ var selected_path_index: int = -1
 
 
 func _ready():
-	btn_exit.connect("button_up", Callable(self, "_handle_exit"))
-	btn_new_level.connect("button_up", Callable(self, "_show_new_level_dialog"))
-	btn_open_level.connect("button_up", Callable(self, "_show_open_level_dialog"))
+	dialog_main_menu.connect("on_exit_click", Callable(self, "_handle_exit"))
+	dialog_main_menu.connect("on_new_level_click", Callable(self, "_show_new_level_dialog"))
+	dialog_main_menu.connect("on_open_level_click", Callable(self, "_show_open_level_dialog"))
+
 	btn_path.connect("button_up", Callable(self, "_show_new_path_dialog"))
 	btn_save.connect("button_up", Callable(self, "_save_level"))
-	btn_main_menu.connect("button_up", Callable(self, "_show_main_menu").bind(false))
+	btn_main_menu.connect("button_up", Callable(self, "_show_main_menu"))
 
 	dialog_new_level.connect("done", Callable(self, "_handle_new_level"))
 	dialog_new_level.connect("cancel", Callable(self, "_handle_new_level_cancel"))
@@ -49,14 +42,19 @@ func _ready():
 
 	path_list.connect("item_selected", Callable(self, "_set_selected_path"))
 
-	_show_main_menu(true)
+	_show_main_menu()
 
 	toolbar.visible = false
 
 
-func _show_main_menu(is_exclusive: bool):
-	dialog_main_menu.exclusive = is_exclusive
-	dialog_main_menu.popup_centered()
+func _toggle_main_menu(visble: bool):
+	dialog_main_menu.visible = visible
+
+func _show_main_menu():
+	_toggle_main_menu(true)
+	
+func _hide_main_menu():
+	_toggle_main_menu(false)
 
 
 func _handle_exit():
@@ -64,7 +62,7 @@ func _handle_exit():
 
 
 func _show_new_level_dialog():
-	dialog_main_menu.hide()
+	_hide_main_menu()
 	dialog_new_level.open()
 
 
@@ -78,7 +76,7 @@ func _show_open_level_dialog():
 
 func _handle_open_level(path: String):
 	dialog_file.disconnect("file_selected", Callable(self, "_handle_open_level"))
-	dialog_main_menu.hide()
+	_hide_main_menu()
 	var level_data = Utils.load_json(path)
 	var new_level = Level.new()
 	new_level.set_level_data(level_data)

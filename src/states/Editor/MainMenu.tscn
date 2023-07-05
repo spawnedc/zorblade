@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgwfr1gte1o45"]
+
+[ext_resource type="Script" path="res://states/Editor/MainMenu.gd" id="1_824cu"]
+[ext_resource type="Texture2D" uid="uid://dwe5u24slowjl" path="res://assets/ui/button-normal.png" id="1_m8qmc"]
+[ext_resource type="Texture2D" uid="uid://co5a4mjrlh0i6" path="res://assets/ui/button-pressed.png" id="2_uhq6b"]
+[ext_resource type="Texture2D" uid="uid://cscaywnjmkg4d" path="res://assets/ui/button-hover.png" id="3_r5swy"]
+
+[node name="CenterContainer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_824cu")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="NewLevel" type="MarginContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Button" type="TextureButton" parent="Menu/NewLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_m8qmc")
+texture_pressed = ExtResource("2_uhq6b")
+texture_hover = ExtResource("3_r5swy")
+
+[node name="Label" type="Label" parent="Menu/NewLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "New level"
+
+[node name="OpenLevel" type="MarginContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Button" type="TextureButton" parent="Menu/OpenLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_m8qmc")
+texture_pressed = ExtResource("2_uhq6b")
+texture_hover = ExtResource("3_r5swy")
+
+[node name="Label" type="Label" parent="Menu/OpenLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Open level"
+
+[node name="Exit" type="MarginContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Button" type="TextureButton" parent="Menu/Exit"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_m8qmc")
+texture_pressed = ExtResource("2_uhq6b")
+texture_hover = ExtResource("3_r5swy")
+
+[node name="Label" type="Label" parent="Menu/Exit"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Exit editor	"
