@@ -4,10 +4,10 @@ extends Area2D
 
 var speed: int = 150
 var direction: Vector2 = Vector2(0, 1)
-var powerup_data: Dictionary
+var powerup_data: Powerup
 
 
-func set_powerup_data(data: Dictionary):
+func set_powerup_data(data: Powerup):
 	powerup_data = data
 
 

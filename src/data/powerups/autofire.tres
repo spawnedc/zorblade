@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerupAutofire" load_steps=2 format=3 uid="uid://bowh2b3yktqxu"]
+
+[ext_resource type="Script" path="res://resources/powerups/autofire.gd" id="1_tfafe"]
+
+[resource]
+script = ExtResource("1_tfafe")
+autofire = true
+name = "Autofire"
+drop_rate = 25.0

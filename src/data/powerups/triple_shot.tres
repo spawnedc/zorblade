@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupWeapon" load_steps=3 format=3 uid="uid://dqg3le2ro2urx"]
+
+[ext_resource type="Script" path="res://resources/powerups/weapon.gd" id="2_flok0"]
+[ext_resource type="Resource" uid="uid://q2drcycogbio" path="res://data/weapons/triple_shot.tres" id="3_6srgc"]
+
+[resource]
+script = ExtResource("2_flok0")
+weapon = ExtResource("3_6srgc")
+name = "Triple Shot"
+drop_rate = 50.0

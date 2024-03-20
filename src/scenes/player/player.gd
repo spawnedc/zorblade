@@ -12,12 +12,11 @@ signal lives_change(lives)
 @onready var powerup_animation: AnimationPlayer = $PowerupName/animation
 
 # Movement speed in pixels per second.
-var speed: int
-var lives: int
-var initial_weapon: String
-var bullet_count: int
-var has_autofire: bool
-var current_weapon
+@export var speed: int
+@export var lives: int
+@export var bullet_count: int
+@export var has_autofire: bool
+@export var current_weapon: Weapon
 var size: Vector2
 var min_x: float
 var max_x: float
@@ -33,12 +32,11 @@ func _ready():
 
 
 func initialise() -> void:
-	var defaults = Defaults.player
-	set_weapon(defaults["initial_weapon"])
-	set_autofire(defaults["has_autofire"])
-	set_velocity(defaults["speed"])
-	set_bullet_count(defaults["bullet_count"])
-	set_lives(defaults["lives"])
+	set_weapon(current_weapon)
+	set_bullet_count(bullet_count)
+	set_velocity(speed)
+	set_autofire(has_autofire)
+	set_lives(lives)
 	initialised = true
 
 
@@ -47,12 +45,13 @@ func set_lives(new_lives: int) -> void:
 	emit_signal("lives_change", lives)
 
 
-func set_weapon(weapon_name: String) -> void:
-	current_weapon = WeaponManager.get_weapon_data(weapon_name)
+func set_weapon(new_weapon: Weapon) -> void:
+	print(new_weapon)
+	current_weapon = new_weapon
 	weapon.set_weapon(current_weapon)
 	print("Player: weapon_change: ", current_weapon)
 	emit_signal("weapon_change", current_weapon)
-	notify(current_weapon["name"])
+	notify(current_weapon.name)
 
 
 func set_autofire(state: bool) -> void:
@@ -85,19 +84,19 @@ func set_bullet_count(new_bullet_count: int) -> void:
 
 
 func _handle_weapon_keys() -> void:
-	var new_weapon
+	var new_weapon: Weapon
 
 	if Input.is_action_just_pressed("weapon_single_shot"):
-		new_weapon = 'Single Shot'
+		new_weapon = WeaponManager.get_weapon_data('Single Shot')
 
 	if Input.is_action_just_pressed("weapon_double_shot"):
-		new_weapon = 'Double Shot'
+		new_weapon = WeaponManager.get_weapon_data('Double Shot')
 
 	if Input.is_action_just_pressed("weapon_triple_shot"):
-		new_weapon = 'Triple Shot'
+		new_weapon = WeaponManager.get_weapon_data('Triple Shot')
 
 	if Input.is_action_just_pressed("weapon_quad_shot"):
-		new_weapon = 'Quad Shot'
+		new_weapon = WeaponManager.get_weapon_data('Quad Shot')
 
 	if new_weapon:
 		set_weapon(new_weapon)
@@ -129,7 +128,7 @@ func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input_vector = input_vector.normalized()
-	
+
 	position += input_vector * speed * delta
 
 	position.x = clamp(position.x, min_x, max_x)

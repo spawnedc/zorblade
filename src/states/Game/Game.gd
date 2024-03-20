@@ -75,20 +75,20 @@ func _on_game_over():
 	MusicManager.stop()
 
 
-func _on_picked_powerup(powerup_data):
-	print("picked up powerup", powerup_data)
-
-	if "weapon" in powerup_data:
-		if powerup_data["weapon"] == player.current_weapon["name"]:
+func _on_picked_powerup(powerup: Powerup):
+	print("picked up powerup", powerup)
+	
+	if powerup is PowerupWeapon:
+		if powerup.weapon == player.current_weapon:
 			player.add_bullet_count(10)
 		else:
-			player.set_weapon(powerup_data["weapon"])
+			player.set_weapon(powerup.weapon)
 
-	if "autofire" in powerup_data:
-		player.set_autofire(powerup_data["autofire"])
+	if powerup is PowerupAutofire:
+		player.set_autofire(powerup.autofire)
 
-	if "bullet_count" in powerup_data:
-		player.add_bullet_count(powerup_data["bullet_count"])
+	if powerup is PowerupExtraBullet:
+		player.add_bullet_count(powerup.bullet_count)
 
-	if "speed" in powerup_data:
-		player.add_speed(powerup_data["speed"])
+	if powerup is PowerupExtraSpeed:
+		player.add_speed(powerup.speed)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupWeapon" load_steps=3 format=3 uid="uid://dtgdwrhm8slpp"]
+
+[ext_resource type="Resource" uid="uid://duqxrjswhjn48" path="res://data/weapons/quad_shot.tres" id="2_dprhl"]
+[ext_resource type="Script" path="res://resources/powerups/weapon.gd" id="2_ed862"]
+
+[resource]
+script = ExtResource("2_ed862")
+weapon = ExtResource("2_dprhl")
+name = "Quad Shot"
+drop_rate = 20.0

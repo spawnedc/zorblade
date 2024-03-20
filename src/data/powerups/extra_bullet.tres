@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerupExtraBullet" load_steps=2 format=3 uid="uid://bida2wu2furpo"]
+
+[ext_resource type="Script" path="res://resources/powerups/extra_bullet.gd" id="1_s73y6"]
+
+[resource]
+script = ExtResource("1_s73y6")
+bullet_count = 2
+name = "Extra Bullet"
+drop_rate = 50.0

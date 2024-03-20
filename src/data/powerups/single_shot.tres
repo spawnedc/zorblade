@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupWeapon" load_steps=3 format=3 uid="uid://3mjwwq6y3f0s"]
+
+[ext_resource type="Script" path="res://resources/powerups/weapon.gd" id="1_3htv3"]
+[ext_resource type="Resource" uid="uid://difjcv6m7kyxt" path="res://data/weapons/single_shot.tres" id="2_146r8"]
+
+[resource]
+script = ExtResource("1_3htv3")
+weapon = ExtResource("2_146r8")
+name = "Single Shot"
+drop_rate = 0.0

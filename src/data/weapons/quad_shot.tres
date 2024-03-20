@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://duqxrjswhjn48"]
+
+[ext_resource type="PackedScene" path="res://scenes/weapons/QuadShot.tscn" id="1_q5fjv"]
+[ext_resource type="Script" path="res://resources/weapon.gd" id="2_o7a8p"]
+
+[resource]
+script = ExtResource("2_o7a8p")
+name = "Quad Shot"
+scene = ExtResource("1_q5fjv")
+damage = 4.0

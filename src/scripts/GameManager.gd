@@ -40,5 +40,5 @@ func start_level():
 	emit_signal("level_start")
 
 
-func pick_powerup(powerup_data):
+func pick_powerup(powerup_data: Powerup):
 	emit_signal("picked_powerup", powerup_data)

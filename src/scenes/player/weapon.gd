@@ -8,13 +8,6 @@ var fire_timer = 0
 var can_fire = true
 var current_weapon
 
-
-func _get_weapon_instance(scene_name: String) -> Node:
-	var weapon_scene = load('res://scenes/weapons/' + scene_name + '.tscn')
-
-	return weapon_scene.instantiate()
-
-
 func fire():
 	if can_fire and get_child_count() < max_bullet_count:
 		current_weapon.fire(self)
@@ -33,11 +26,11 @@ func set_max_bullet_count(new_count: int) -> void:
 	max_bullet_count = new_count
 
 
-func set_weapon(weapon_data):
+func set_weapon(weapon: Weapon):
 	if current_weapon:
 		current_weapon.queue_free()
 
-	current_weapon = _get_weapon_instance(weapon_data['bullet_scene'])
-	current_weapon.set_damage(weapon_data["damage"])
+	current_weapon = weapon.scene.instantiate()
+	current_weapon.set_damage(weapon.damage)
 
 	add_child(current_weapon)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerupExtraSpeed" load_steps=2 format=3 uid="uid://j20jdf1pjx0d"]
+
+[ext_resource type="Script" path="res://resources/powerups/extra_speed.gd" id="1_fiu3u"]
+
+[resource]
+script = ExtResource("1_fiu3u")
+speed = 10
+name = "Extra Speed"
+drop_rate = 50.0

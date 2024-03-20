@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://wiyl20p4t4pg"]
+
+[ext_resource type="PackedScene" path="res://scenes/weapons/DoubleShot.tscn" id="1_ist4b"]
+[ext_resource type="Script" path="res://resources/weapon.gd" id="2_j32mr"]
+
+[resource]
+script = ExtResource("2_j32mr")
+name = "Double Shot"
+scene = ExtResource("1_ist4b")
+damage = 2.0

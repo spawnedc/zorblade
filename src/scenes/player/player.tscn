@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg0vj604a8b0n"]
+[gd_scene load_steps=8 format=3 uid="uid://dg0vj604a8b0n"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://blr5v168apjft" path="res://assets/spaceshooter/playerShip1_blue.png" id="2"]
+[ext_resource type="Resource" uid="uid://difjcv6m7kyxt" path="res://data/weapons/single_shot.tres" id="2_xdmvs"]
 [ext_resource type="Script" path="res://scenes/player/weapon.gd" id="3"]
 
 [sub_resource type="CircleShape2D" id="1"]
@@ -44,6 +45,10 @@ _data = {
 position = Vector2(297.664, 745.602)
 collision_mask = 12
 script = ExtResource("1")
+speed = 300
+lives = 3
+bullet_count = 10
+current_weapon = ExtResource("2_xdmvs")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.66968)
